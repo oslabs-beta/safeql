@@ -1,6 +1,6 @@
 function Header (){
   return (
-    <div>test</div>
+    <div>This is a Header Component!</div>
   )
 }
 
