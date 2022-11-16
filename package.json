@@ -2,7 +2,6 @@
   "name": "safeql",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +10,9 @@
   },
   "dependencies": {
     "@apollo/server": "^4.1.1",
+    "@codemirror/commands": "^6.1.2",
+    "@codemirror/state": "^6.1.4",
+    "@codemirror/view": "^6.5.1",
     "codemirror": "^6.0.1",
     "codemirror-graphql": "^2.0.2",
     "eslint": "8.27.0",
