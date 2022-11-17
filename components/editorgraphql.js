@@ -2,34 +2,32 @@
 //https://www.codiga.io/blog/implement-codemirror-6-in-react/
 import { useRef, useEffect } from "react"
 import {EditorState} from "@codemirror/state"
-import {EditorView, keymap} from "@codemirror/view"
-import {defaultKeymap} from "@codemirror/commands"
-
-// import type { ValidationContext } from 'graphql';
-
-import CodeMirror from 'codemirror';
-import 'codemirror/addon/hint/show-hint';
-import 'codemirror/addon/lint/lint';
-import 'codemirror-graphql/hint';
-import 'codemirror-graphql/lint';
-import 'codemirror-graphql/mode';
+import { EditorView, basicSetup } from 'codemirror';
+import {keymap} from "@codemirror/view"
+import {defaultKeymap, indentWithTab } from "@codemirror/commands"
+import { oneDark } from '@codemirror/theme-one-dark';
+import { graphql } from 'cm6-graphql'
 
 export const EditorGraphQL = () => {
   const editor = useRef();
 
   useEffect(() => {
-    const startState = CodeMirror.fromTextArea(myTextarea, {
-      mode: 'graphql',
-      lint: {
-        schema: myGraphQLSchema,
-        validationRules: [ExampleRule],
-      },
-      hintOptions: {
-        schema: myGraphQLSchema,
-      },
+    const startState = EditorState.create({
+      doc: 'query',
+      extensions: [
+        basicSetup,
+        keymap.of([defaultKeymap, indentWithTab]),
+        oneDark,
+        // graphqlLanguage,
+        graphql()
+      ],
     });
 
-    const view = new EditorView({ state: startState, parent: editor.current });
+    const view = new EditorView({ 
+      state: startState, 
+      parent: editor.current,
+    
+    });
 
     return () => {
       view.destroy();
@@ -37,6 +35,10 @@ export const EditorGraphQL = () => {
 }, []);
 
   return (
+    <>
     <div ref={editor}></div>
+    <button>Submit Query</button>
+    <button>Clear</button>
+    </>
   )
 };
