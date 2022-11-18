@@ -1,0 +1,31 @@
+.urlBox {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.urlBox input {
+  width: 300px;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.innerContainer {
+  border: 1px solid red;
+  display: flex;
+}
+
+.editor {
+  width: 30%;
+  height: 600px;
+
+}
+
+.response {
+  width: 30%;
+  border: 1px solid black;
+}
+
+.analysis {
+  width: 30%;
+}

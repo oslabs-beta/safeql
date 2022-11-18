@@ -11,6 +11,7 @@ import { graphql } from 'cm6-graphql'
 export const EditorGraphQL = () => {
   const editor = useRef();
 
+  
   useEffect(() => {
     const startState = EditorState.create({
       doc: 'query',
@@ -18,7 +19,6 @@ export const EditorGraphQL = () => {
         basicSetup,
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
-        // graphqlLanguage,
         graphql()
       ],
     });
@@ -26,7 +26,7 @@ export const EditorGraphQL = () => {
     const view = new EditorView({ 
       state: startState, 
       parent: editor.current,
-    
+      // contentHeight: 120,
     });
 
     return () => {
@@ -36,7 +36,7 @@ export const EditorGraphQL = () => {
 
   return (
     <>
-    <div ref={editor}></div>
+    <div ref={editor} className='editor'></div>
     <button>Submit Query</button>
     <button>Clear</button>
     </>
