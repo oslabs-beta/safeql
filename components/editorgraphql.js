@@ -16,12 +16,11 @@ export const EditorGraphQL = () => {
   const [query, setQuery] = useState('');
 
 
-  const updateQuery = (value) => {
-    setQuery(value)
+  const updateQuery = EditorView.updateListener.of((v) => {
+    setQuery(v.state.doc.toString());
+});
 
-  }
-
-  const submitQuery = () => {
+  const submitQuery = (url) => {
     queryEndpoint(url)
   }
 
@@ -38,7 +37,8 @@ export const EditorGraphQL = () => {
         basicSetup,
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
-        graphql()
+        graphql(),
+        updateQuery
       ],
     });
 
@@ -55,7 +55,7 @@ export const EditorGraphQL = () => {
   return (
     <section className="queryComponent">
       <h1>Query</h1>
-      <div ref={editor} className='editor' onChange={updateQuery}></div>
+      <div ref={editor} className='editor'></div>
       <button onClick={submitQuery}>Submit Query</button>
       <button onClick={clearQuery}>Clear</button>
     </section>
