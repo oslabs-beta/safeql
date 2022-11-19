@@ -15,17 +15,21 @@
   display: flex;
 }
 
-.editor {
-  width: 30%;
-  height: 600px;
+.queryComponent {
+  width: 33%;
+}
 
+.editor {
+  height: 600px;
+  background-color: rgb(27, 27, 27);
 }
 
 .response {
-  width: 30%;
+  width: 33%;
   border: 1px solid black;
 }
 
 .analysis {
-  width: 30%;
+  background-color: ghostwhite;
+  width: 33%;
 }

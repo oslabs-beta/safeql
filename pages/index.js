@@ -7,6 +7,7 @@ import { URLBox } from '../components/URLBox';
 import { ResponseBox } from '../components/ResponseBox';
 import { AnalysisBox } from '../components/AnalysisBox';
 
+
 export default function Home() {
   return (
     <div className={styles.container}>

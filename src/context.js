@@ -1,29 +1,29 @@
 import { createContext, useState } from "react";
 
-//Initialize the context
-const Context = createContext();
+//create context
+const Context = createContext({});
+Context.displayName = "Query Context"
 
-//Setup state for context
-const contextProvider = () => {
+//add context provider
+const ContextProvider = ({children}) => {
+  //create state variables
+  const [url, setUrl] = useState();
+  const [response, setResponse] = useState();
 
-  //declare hooks as initial state
-  const [url, setUrl] = useState('');
-
-
-  //declare State
-  const contextState = {
-    url
-  };
+  //Initialize the state
+const initialState = {
+  url,
+  setUrl,
+  response,
+  setResponse
+}
 
   return (
-    <Context.Provider value={contextState}>
-      {children}
-    </Context.Provider>
-  )
-}
+        // this is the provider providing state
+        <Context.Provider value={initialState}>
+            {children}
+        </Context.Provider>
+    );
+};
 
-export {
-  contextProvider,
-}
-
-export default Context;
+export {Context, ContextProvider};
