@@ -1,16 +1,16 @@
 //codemirror doesn't work with server side rendering
 //https://www.codiga.io/blog/implement-codemirror-6-in-react/
 import { useRef, useEffect, useContext, useState } from "react"
-import {EditorState} from "@codemirror/state"
+import { EditorState } from "@codemirror/state"
 import { EditorView, basicSetup } from 'codemirror';
-import {keymap} from "@codemirror/view"
+import { keymap } from "@codemirror/view"
 import {defaultKeymap, indentWithTab } from "@codemirror/commands"
 import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql'
 import { Context } from "../src/context";
 import { queryEndpoint } from "../src/queryService";
 
-export const EditorGraphQL = () => {
+export const EditorBox = () => {
   const editor = useRef();
   const { url } = useContext(Context);
   const [query, setQuery] = useState('');
@@ -20,8 +20,8 @@ export const EditorGraphQL = () => {
     setQuery(v.state.doc.toString());
 });
 
-  const submitQuery = (url) => {
-    queryEndpoint(url)
+  const submitQuery = () => {
+    queryEndpoint(url, query)
   }
 
   const clearQuery = () => {

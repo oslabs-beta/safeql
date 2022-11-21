@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import Header from '../components/Header';
-import { EditorGraphQL } from '../components/editorgraphql'
+import { EditorBox } from '../components/EditorBox'
 import { URLBox } from '../components/URLBox';
 import { ResponseBox } from '../components/ResponseBox';
 import { AnalysisBox } from '../components/AnalysisBox';
@@ -20,8 +19,9 @@ export default function Home() {
         />
       </Head>
       <URLBox />
+      
       <div className='innerContainer'>
-        <EditorGraphQL />
+        <EditorBox />
         <ResponseBox />
         <AnalysisBox />
       </div>

@@ -24,10 +24,15 @@
   background-color: rgb(27, 27, 27);
 }
 
-.response {
-  width: 33%;
-  border: 1px solid black;
+.queryComponent button {
+  margin: 10px 5px;
+  padding: 8px;
+  border-radius: 10px;
 }
+
+.response {
+  height: 600px;
+  background-color: rgb(66, 66, 66);}
 
 .analysis {
   background-color: ghostwhite;
