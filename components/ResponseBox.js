@@ -11,10 +11,7 @@ export const ResponseBox = () => {
   const responseBox = useRef();
   const { response } = useContext(Context);
 
-  const updateResponse = EditorView.updateListener.of((v) => {
-    v.state.doc = response
-    console.log(response)
-});
+  // To display the rsponse need to figure out how to update based on response variable being updated JSON.stringify(response, null, 2)
 
   useEffect(() => {
     const startState = EditorState.create({
@@ -24,7 +21,6 @@ export const ResponseBox = () => {
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
         graphql(),
-        updateResponse
       ],
     });
 

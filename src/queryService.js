@@ -12,5 +12,5 @@ export const queryEndpoint = async (url, query) => {
     }),
   })
     const toPrint = await result.json();
-    return toPrint
+    return toPrint;
   }
