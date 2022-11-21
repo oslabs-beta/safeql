@@ -7,8 +7,8 @@ Context.displayName = "Query Context"
 //add context provider
 const ContextProvider = ({children}) => {
   //create state variables
-  const [url, setUrl] = useState();
-  const [response, setResponse] = useState();
+  const [url, setUrl] = useState('');
+  const [response, setResponse] = useState('');
 
   //Initialize the state
 const initialState = {

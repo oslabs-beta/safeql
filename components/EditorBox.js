@@ -4,7 +4,7 @@ import { useRef, useEffect, useContext, useState } from "react"
 import { EditorState } from "@codemirror/state"
 import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from "@codemirror/view"
-import {defaultKeymap, indentWithTab } from "@codemirror/commands"
+import { defaultKeymap, indentWithTab } from "@codemirror/commands"
 import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql'
 import { Context } from "../src/context";
@@ -12,7 +12,7 @@ import { queryEndpoint } from "../src/queryService";
 
 export const EditorBox = () => {
   const editor = useRef();
-  const { url } = useContext(Context);
+  const { url, response, setResponse } = useContext(Context);
   const [query, setQuery] = useState('');
 
 
@@ -20,12 +20,12 @@ export const EditorBox = () => {
     setQuery(v.state.doc.toString());
 });
 
-  const submitQuery = () => {
-    queryEndpoint(url, query)
+  const submitQuery = async () => {
+    const results = await queryEndpoint(url, query);
+    setResponse(results)
   }
 
   const clearQuery = () => {
-    console.log(query)
     setQuery('')
     console.log(query)
   }

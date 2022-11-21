@@ -1,7 +1,16 @@
-import { useContext } from "react"
-import { Context } from "./context"
 
 //This will submit the typed query into the specified endpoint for basic functionality
-export const queryEndpoint = (url, query) => {
-  console.log('from queryEndpoint', url, 'query', query)
-}
+export const queryEndpoint = async (url, query) => {
+  const result = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: query,
+      variables: {},
+    }),
+  })
+    const toPrint = await result.json();
+    return toPrint
+  }
