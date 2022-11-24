@@ -1,12 +1,16 @@
 import '../styles/globals.css';
-import Header from '../components/test';
+import '../styles/components.css';
+import Header from '../components/Header';
+import { ContextProvider } from "../src/context"; 
+
 
 function MyApp({ Component, pageProps }) {
+  
   return (
-    <>
-      <Header />
-      <Component {...pageProps} />
-    </>
+      <ContextProvider>
+        <Header />
+        <Component {...pageProps} />
+      </ContextProvider>
   );
 }
 

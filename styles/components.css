@@ -1,0 +1,43 @@
+.urlBox {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+
+.urlBox input {
+  width: 300px;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.innerContainer {
+  border: 1px solid red;
+  display: flex;
+}
+
+.queryComponent {
+  width: 33%;
+}
+
+.editor {
+  height: 600px;
+  background-color: rgb(44, 49, 58);
+  margin: 1px; 
+}
+
+.queryComponent button {
+  margin: 10px 5px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.response {
+  height: 600px;
+  background-color: rgb(44, 49, 58);
+  margin: 1px; 
+}
+
+.analysis {
+  background-color: ghostwhite;
+  width: 33%;
+}
