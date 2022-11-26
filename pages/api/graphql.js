@@ -8,9 +8,9 @@ const typeDefs = `#graphql
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "Book" type defines the queryable fields for every book in our data source.
-  type Book {
-    title: String
-    author: String
+  type users {
+    id: Int
+    username: String
   }
 
   # The "Query" type is special: it lists all of the available queries that
@@ -21,6 +21,11 @@ const typeDefs = `#graphql
     books: [Book]
   }
 `;
+
+//do we need to make an API from our sql database?
+//queries are to FETCH and GET data
+//resolvers are for GET?
+//mutations are for POST, PUT, PATCH, DELETE
 
 const books = [
   {
