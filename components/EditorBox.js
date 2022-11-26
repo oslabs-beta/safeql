@@ -9,31 +9,32 @@ import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql'
 import { Context } from "../src/context";
 import { queryEndpoint } from "../src/queryService";
+import { ResponseBox } from "./ResponseBox";
 
 export const EditorBox = () => {
   const editor = useRef();
   const { url, response, setResponse } = useContext(Context);
   const [query, setQuery] = useState('');
 
-
   const updateQuery = EditorView.updateListener.of((v) => {
     setQuery(v.state.doc.toString());
 });
 
   const submitQuery = async () => {
+    console.log(query)
     const results = await queryEndpoint(url, query);
-    setResponse(results);
-    console.log(response)
+    const display = JSON.stringify(results, null, 2)
+    setResponse(display);
   }
 
-  const clearQuery = () => {
-    setQuery('')
-    console.log(query)
-  }
+  // const clearQuery = () => {
+  //   setQuery('')
+  //  Doesn't work, would need to figure this out, TBD if we need
+  // }
 
   useEffect(() => {
     const startState = EditorState.create({
-      doc: 'query',
+      doc: query || '',
       extensions: [
         basicSetup,
         keymap.of([defaultKeymap, indentWithTab]),
@@ -58,7 +59,7 @@ export const EditorBox = () => {
       <h1>Query</h1>
       <div ref={editor} className='editor'></div>
       <button onClick={submitQuery}>Submit Query</button>
-      <button onClick={clearQuery}>Clear</button>
+      {/* <button onClick={clearQuery}>Clear</button> */}
     </section>
   )
 };

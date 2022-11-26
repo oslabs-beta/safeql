@@ -3,7 +3,6 @@ import { Context } from "../src/context";
 
  
 export const URLBox = () => {
-  // const [ endpoint, setEndpoint] = useState('');
   const { url, setUrl } = useContext(Context)
 
   const handleUrlChange = (e) => {

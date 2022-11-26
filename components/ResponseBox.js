@@ -7,15 +7,13 @@ import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql'
 import { Context } from "../src/context";
 
-export const ResponseBox = () => {
+export const ResponseBox = (props) => {
   const responseBox = useRef();
   const { response } = useContext(Context);
 
-  // To display the rsponse need to figure out how to update based on response variable being updated JSON.stringify(response, null, 2)
-
   useEffect(() => {
     const startState = EditorState.create({
-      doc: '',
+      doc: response || '',
       extensions: [
         basicSetup,
         keymap.of([defaultKeymap, indentWithTab]),
@@ -32,7 +30,7 @@ export const ResponseBox = () => {
     return () => {
       view.destroy();
     };
-}, []);
+}, [response]);
 
   return (
     <section className="queryComponent">
