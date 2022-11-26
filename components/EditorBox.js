@@ -21,7 +21,6 @@ export const EditorBox = () => {
 });
 
   const submitQuery = async () => {
-    console.log(query)
     const results = await queryEndpoint(url, query);
     const display = JSON.stringify(results, null, 2)
     setResponse(display);
