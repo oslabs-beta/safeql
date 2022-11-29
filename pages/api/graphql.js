@@ -1,48 +1,51 @@
-import { ApolloServer } from '@apollo/server';
+//import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
+const { gql, ApolloServer } = require ("apollo-server")
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
-const typeDefs = `#graphql
-  # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+const typeDefs = gql `
+  # Comments in GraphQL strings with #
+  # ! means value cannot be null
+  # Scalar types String, Int, Float, BOolean adn ID
+  # list type is surrounded in brackets [Int] is list of integers
 
-  # This "Book" type defines the queryable fields for every book in our data source.
   type users {
-    id: Int
-    username: String
+    id: ID!
+    username: String!
+    password: String!
   }
 
-  # The "Query" type is special: it lists all of the available queries that
-  # clients can execute, along with the return type for each. In this
-  # case, the "books" query returns an array of zero or more Books (defined above).
+  type endpointhistory {
+    id: ID!
+    endpoint: String!
+    userid: Int
+    users: Int
+  }
 
+# type mutation is like an POST, PUT, PATCH, DELETE
+# input type is for mutations if you only want to have select columns and not have to list all of them to mutate them
+# javascript has no enum support but typescript does
+
+# query that lists all endpoints for a specified user
   type Query {
-    books: [Book]
+    users: [endpoint]
   }
+
+  type Mutation {
+    addEndpoint(endpoint: String!, userid: Int) : endpointhistory
+  }
+
+
+
 `;
-
-//do we need to make an API from our sql database?
-//queries are to FETCH and GET data
-//resolvers are for GET?
-//mutations are for POST, PUT, PATCH, DELETE
-
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
 
 // Resolvers define how to fetch the types defined in your schema.
 // This resolver retrieves books from the "books" array above.
 const resolvers = {
   Query: {
-    books: () => books,
+    endpoints: () => endpoints,
   },
 };
 
