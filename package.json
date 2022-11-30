@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "tw dev": "tailwindcss -i ./input.css -o ./styles/tailwind.css --watch"
+    "tw:dev": "tailwindcss -i ./input.css -o ./styles/output.css --watch"
   },
   "dependencies": {
     "@apollo/server": "^4.1.1",
