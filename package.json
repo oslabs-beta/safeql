@@ -21,6 +21,7 @@
     "graphql": "^16.6.0",
     "graphql-language-service": "^5.0.6",
     "next": "13.0.3",
+    "pg": "^8.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
