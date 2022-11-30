@@ -10,10 +10,11 @@ import { graphql } from 'cm6-graphql'
 import { Context } from "../src/context";
 import { queryEndpoint } from "../src/queryService";
 import { ResponseBox } from "./ResponseBox";
+import { fixedHeightEditor } from "../src/cm6Theme";
 
 export const EditorBox = () => {
   const editor = useRef();
-  const { url, response, setResponse } = useContext(Context);
+  const { url, response, setResponse, analysisData, setAnalysisData } = useContext(Context);
   const [query, setQuery] = useState('');
 
   const updateQuery = EditorView.updateListener.of((v) => {
@@ -22,8 +23,13 @@ export const EditorBox = () => {
 
   const submitQuery = async () => {
     const results = await queryEndpoint(url, query);
-    const display = JSON.stringify(results, null, 2)
+    const display = JSON.stringify(results[0], null, 2)
     setResponse(display);
+    setAnalysisData({
+      ...analysisData,
+      querySpeed: `${results[1]} ms`
+    })
+    console.log(analysisData)
   }
 
   // const clearQuery = () => {
@@ -39,7 +45,8 @@ export const EditorBox = () => {
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
         graphql(),
-        updateQuery
+        updateQuery, 
+        fixedHeightEditor
       ],
     });
 

@@ -6,6 +6,7 @@ import { defaultKeymap, indentWithTab } from "@codemirror/commands"
 import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql'
 import { Context } from "../src/context";
+import { fixedHeightEditor } from "../src/cm6Theme";
 
 export const ResponseBox = (props) => {
   const responseBox = useRef();
@@ -19,6 +20,7 @@ export const ResponseBox = (props) => {
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
         graphql(),
+        fixedHeightEditor
       ],
     });
 
