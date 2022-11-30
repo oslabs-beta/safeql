@@ -14,6 +14,7 @@
     "@codemirror/state": "^6.1.4",
     "@codemirror/theme-one-dark": "^6.1.0",
     "@codemirror/view": "^6.5.1",
+    "@prisma/client": "^4.6.1",
     "cm6-graphql": "^0.0.1",
     "codemirror": "^6.0.1",
     "eslint": "8.27.0",
@@ -21,6 +22,7 @@
     "graphql": "^16.6.0",
     "graphql-language-service": "^5.0.6",
     "next": "13.0.3",
+    "prisma": "^4.6.1",
     "pg": "^8.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
