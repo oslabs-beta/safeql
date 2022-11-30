@@ -32,11 +32,6 @@ export const EditorBox = () => {
     console.log(analysisData)
   }
 
-  // const clearQuery = () => {
-  //   setQuery('')
-  //  Doesn't work, would need to figure this out, TBD if we need
-  // }
-
   useEffect(() => {
     const startState = EditorState.create({
       doc: query || '',
@@ -65,7 +60,6 @@ export const EditorBox = () => {
       <h1>Query</h1>
       <div ref={editor} className='editor'></div>
       <button onClick={submitQuery}>Submit Query</button>
-      {/* <button onClick={clearQuery}>Clear</button> */}
     </section>
   )
 };

@@ -8,6 +8,12 @@ function Security (){
     <section>
     <h1>Security</h1>
     <div>Introspection: {introspectionOn ? 'On' : 'Off'}</div>
+    <div>
+      <h3>Suggestions</h3>
+      <ul>
+        <li>{introspectionOn ? null : 'Turn on introspection to secure schema'}</li>
+        </ul>
+      </div>
     </section>
   )
 }

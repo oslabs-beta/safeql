@@ -44,7 +44,6 @@ export const checkIntrospection = async (url) => {
       }),
     })
       const schema = await result.json();
-      console.log(schema)
       return true
   } catch (error) {
     console.log('Introspection is turned off or the endpoint is not a graphql endpoint')
