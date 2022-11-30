@@ -6,10 +6,12 @@ import { ContextProvider } from '../src/context';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ContextProvider>
-      <Header />
-      <Component {...pageProps} />
-    </ContextProvider>
+    <div id='main-container' className=''>
+      <ContextProvider>
+        <Header />
+        <Component {...pageProps} />
+      </ContextProvider>
+    </div>
   );
 }
 
