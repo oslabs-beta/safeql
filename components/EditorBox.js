@@ -9,12 +9,13 @@ import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql'
 import { Context } from "../src/context";
 import { queryEndpoint } from "../src/queryService";
+import { ResponseBox } from "./ResponseBox";
+import { fixedHeightEditor } from "../src/cm6Theme";
 
 export const EditorBox = () => {
   const editor = useRef();
-  const { url, response, setResponse } = useContext(Context);
+  const { url, response, setResponse, analysisData, setAnalysisData } = useContext(Context);
   const [query, setQuery] = useState('');
-
 
   const updateQuery = EditorView.updateListener.of((v) => {
     setQuery(v.state.doc.toString());
@@ -22,24 +23,25 @@ export const EditorBox = () => {
 
   const submitQuery = async () => {
     const results = await queryEndpoint(url, query);
-    setResponse(results);
-    console.log(response)
-  }
-
-  const clearQuery = () => {
-    setQuery('')
-    console.log(query)
+    const display = JSON.stringify(results[0], null, 2)
+    setResponse(display);
+    setAnalysisData({
+      ...analysisData,
+      querySpeed: `${results[1]} ms`
+    })
+    console.log(analysisData)
   }
 
   useEffect(() => {
     const startState = EditorState.create({
-      doc: 'query',
+      doc: query || '',
       extensions: [
         basicSetup,
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
         graphql(),
-        updateQuery
+        updateQuery, 
+        fixedHeightEditor
       ],
     });
 
@@ -58,7 +60,6 @@ export const EditorBox = () => {
       <h1>Query</h1>
       <div ref={editor} className='editor'></div>
       <button onClick={submitQuery}>Submit Query</button>
-      <button onClick={clearQuery}>Clear</button>
     </section>
   )
 };
