@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 import { EditorBox } from '../components/EditorBox'
 import { URLBox } from '../components/URLBox';
 import { ResponseBox } from '../components/ResponseBox';
-import { AnalysisBox } from '../components/AnalysisBox';
+import { ResultsBox } from '../components/ResultsBox';
 
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
       <div className='innerContainer'>
         <EditorBox />
         <ResponseBox />
-        <AnalysisBox />
+        <ResultsBox />
       </div>
 
 
