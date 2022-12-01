@@ -14,6 +14,7 @@
     "@codemirror/state": "^6.1.4",
     "@codemirror/theme-one-dark": "^6.1.0",
     "@codemirror/view": "^6.5.1",
+    "@prisma/client": "^4.7.0",
     "cm6-graphql": "^0.0.1",
     "codemirror": "^6.0.1",
     "eslint": "8.27.0",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "2.7.1"
+    "prettier": "2.7.1",
+    "prisma": "^4.7.0"
   }
 }
