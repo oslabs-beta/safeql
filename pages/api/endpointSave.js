@@ -5,8 +5,8 @@ export default async function (req, res){
         console.log('req.body: ', req.body);
         const query = `INSERT INTO endpointhistory(endpoint, userid)
         VALUES ($1, $2)`
-        const values = [req.body.endpoint, req.body.username]
-        const result = await conn.query(
+        const values = [req.body.endpoint, req.body.userid]
+        const result = await db.query(
             query,
             values
         );

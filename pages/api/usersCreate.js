@@ -6,7 +6,7 @@ export default async function (req, res){
         const query = `INSERT INTO users(username, password)
         VALUES ($1, $2)`
         const values = [req.body.username, req.body.password]
-        const result = await conn.query(
+        const result = await db.query(
             query,
             values
         );
