@@ -4,7 +4,7 @@ function Header() {
   return (
     <div className='flex justify-center'>
       <Image
-        src='/safeql-dark.png'
+        src='/safeql-light.png'
         alt='SafeQL Logo'
         width={200}
         height={16}

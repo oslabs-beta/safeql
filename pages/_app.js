@@ -6,7 +6,7 @@ import { ContextProvider } from '../src/context';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div id='main-container' className='bg-gray-500'>
+    <div id='main-container' className='bg-blue-400 text-white'>
       <ContextProvider>
         <Header />
         <Component {...pageProps} />

@@ -5,7 +5,7 @@ import { Context } from '../src/context';
 import { checkIntrospection } from '../src/queryService';
 
 export const ResultsBox = () => {
-  const { isSecurity, setIsSecurity, setIntrospectionOn, introspectionOn } =
+  const { url, isSecurity, setIsSecurity, setIntrospectionOn, introspectionOn } =
     useContext(Context);
 
   const runAnalysis = () => {

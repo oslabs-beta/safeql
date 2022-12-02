@@ -10,7 +10,10 @@ module.exports = {
       'blue-300': '#5277AF',
       'blue-200': '#7495C7',
       'blue-100': '#97B5E2',
-      white: '#FFFFFF',
+      white: '#ffffff',
+    },
+    fontFamily:{
+
     },
     extend: {
       width: {
