@@ -1,34 +1,25 @@
-const db = require('../../lib/db')
+const db = require('../../lib/db');
 
-// export default async function handler(req, res) {
-//   const endpointhistory = await db.query('SELECT * FROM endpointhistory')
+//returns all endpoints for specified user
 
-//   console.log('endpointHistory', endpointhistory.rows);
-
-//   return res.status(200).json(endpointhistory.rows)
-// }
 export default async function (req, res){
   try{
       console.log('req.body: ', req.body);
-      const values = [req.body.endpoint, req.body.userid]
-      const query = `SELECT * FROM endpointhistory(endpoint, userid)
-      VALUES ($1, $2) RETURNING *`
+    //   const values = [req.body.userid]
+      const query = `SELECT endpoint FROM endpointHistory WHERE userid = '${req.body.userid}'`
+
       const result = await db.query(
-          query,
-          values
-      );
+          query      
+        );
       console.log("result: ", result);
-      return res.status(200);
+      return res.status(200).json(result.rows);
   }
   catch(err){
       console.log(err);
+      res.status(400).send(err);
+
   }
 }
-//1. create an endpoint (make sure you include the user Id, may require a query to get that id based on username?) POST
-
-//2. return all endpoints based on username or user id GET
-
-//3. delete endpoint
 
 
 
