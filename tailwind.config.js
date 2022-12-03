@@ -12,13 +12,14 @@ module.exports = {
       'blue-100': '#97B5E2',
       white: '#ffffff',
     },
-    fontFamily:{
-
-    },
+    fontFamily: {},
     extend: {
       width: {
-        '92p' : '92%'
-      }
+        '95p': '95%',
+      },
+      borderRadius: {
+        'lg-1': '0.6rem',
+      },
     },
   },
   plugins: [],

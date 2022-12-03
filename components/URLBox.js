@@ -9,11 +9,13 @@ export const URLBox = () => {
   };
 
   return (
-    <div className='bg-blue-200 py-3.5 rounded-tl-lg'>
-      <label className='py-6 px-3.5 rounded-tl-lg text-2xl font-bold'>URL</label>
+    <div className='bg-blue-200 py-2 rounded-lg-1 flex justify-evenly justify-center align-middle content-center mb-3'>
+      <label className='px-1 text-xl font-bold justify-center align-middle content-center p-1'>
+        URL
+      </label>
       <input
         onChange={handleUrlChange}
-        className='ml-5 p-2 bg-blue-100 rounded-md w-92p'
+        className='bg-blue-100 rounded-lg-1 w-95p text-xl p-1 pl-3 pr-3 font-light focus:border-none focus:outline focus:outline-2 focus:outline-blue-300'
       ></input>
     </div>
   );
