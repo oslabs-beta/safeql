@@ -4,15 +4,9 @@ import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
 import { oneDark } from '@codemirror/theme-one-dark';
-<<<<<<< HEAD
-import { graphql } from 'cm6-graphql'
-import { Context } from "../src/context";
-import { fixedHeightEditor } from "../src/cm6Theme";
-=======
 import { graphql } from 'cm6-graphql';
 import { Context } from '../src/context';
 import { fixedHeightEditor } from '../src/cm6Theme';
->>>>>>> dev
 
 export const ResponseBox = (props) => {
   const responseBox = useRef();
@@ -26,11 +20,7 @@ export const ResponseBox = (props) => {
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
         graphql(),
-<<<<<<< HEAD
-        fixedHeightEditor
-=======
         fixedHeightEditor,
->>>>>>> dev
       ],
     });
 
@@ -42,11 +32,7 @@ export const ResponseBox = (props) => {
     return () => {
       view.destroy();
     };
-<<<<<<< HEAD
-}, [response]);
-=======
   }, [response]);
->>>>>>> dev
 
   return (
     <section className='mt-2 mx-1 rounded-t-lg-1 w-1/3 box-border min-w-1/3'>
