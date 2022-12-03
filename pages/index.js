@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <URLBox />
       
-      <div className='innerContainer'>
+      <div className='flex flex-row my-1'>
         <EditorBox />
         <ResponseBox />
         <ResultsBox />
