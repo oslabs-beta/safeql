@@ -20,14 +20,14 @@ export default function Home() {
       </Head>
       <URLBox />
       
-      <div className='innerContainer'>
+      <div className='flex flex-row my-1'>
         <EditorBox />
         <ResponseBox />
         <ResultsBox />
       </div>
 
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href='https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app'
           target='_blank'
@@ -43,7 +43,7 @@ export default function Home() {
             />
           </span>
         </a>
-      </footer>
+      </footer> */}
     </div>
   );
 }
