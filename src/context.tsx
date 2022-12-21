@@ -1,19 +1,30 @@
-import { createContext, useState } from "react";
+import { createContext, useState, Dispatch, SetStateAction, ReactNode } from "react";
+
+//create type for Context
+type ContextType = {
+  url:string,
+  setUrl: 
+}
+
+type AnalysisType ={
+  querySpeed: number | null
+}
+
 
 //create context
-const Context = createContext({});
+const Context = createContext<ContextType>({});
 Context.displayName = "Query Context"
 
 //add context provider
 const ContextProvider = ({children}) => {
   //create state variables
-  const [url, setUrl] = useState('');
-  const [response, setResponse] = useState('');
-  const [introspectionOn, setIntrospectionOn] = useState(true)
-  const [analysisData, setAnalysisData] = useState({
+  const [url, setUrl] = useState<string>('');
+  const [response, setResponse] = useState<string>('');
+  const [introspectionOn, setIntrospectionOn] = useState<boolean>(true)
+  const [analysisData, setAnalysisData] = useState<AnalysisType>({
     querySpeed: null,  
   });
-  const [ isSecurity, setIsSecurity] = useState(false)
+  const [ isSecurity, setIsSecurity] = useState<boolean>(false)
 
   //Initialize the state
 const initialState = {
