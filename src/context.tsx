@@ -4,6 +4,7 @@ import {
   Dispatch,
   SetStateAction,
   ReactNode,
+  FC,
 } from 'react';
 
 //create type for Context
@@ -21,15 +22,19 @@ type ContextType = {
 };
 
 type AnalysisType = {
-  querySpeed: number | null;
+  querySpeed: string | null;
 };
 
-//create context
+type Props = {
+  children: React.ReactNode;
+};
+
+//create context; would prefer to not use Partial, but can't get it to work otherwise for now
 const Context = createContext<ContextType>({});
 Context.displayName = 'Query Context';
 
-//add context provider
-const ContextProvider = ({ children }) => {
+//add context functionality
+const ContextFunctionality = ({ children }: Props) => {
   //create state variables
   const [url, setUrl] = useState<string>('');
   const [response, setResponse] = useState<string>('');
@@ -59,4 +64,4 @@ const ContextProvider = ({ children }) => {
   );
 };
 
-export { Context, ContextProvider };
+export { Context, ContextFunctionality };
