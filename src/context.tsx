@@ -32,6 +32,7 @@ type Props = {
 // create context; would prefer to not use Partial, but can't get it to work otherwise for now
 // come back to this later, yes
 //seriously
+// this is crucial later on
 const Context = createContext<ContextType>({});
 Context.displayName = 'Query Context';
 
