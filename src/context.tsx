@@ -29,7 +29,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-//create context; would prefer to not use Partial, but can't get it to work otherwise for now
+// create context; would prefer to not use Partial, but can't get it to work otherwise for now
+// come back to this later
 const Context = createContext<ContextType>({});
 Context.displayName = 'Query Context';
 
