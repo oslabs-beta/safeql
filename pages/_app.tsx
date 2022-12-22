@@ -2,7 +2,7 @@ import '../styles/globals.css';
 import '../styles/components.css';
 import '../styles/output.css';
 import Header from '../components/Header';
-import { ContextProvider } from '../src/context';
+import { ContextFunctionality } from '../src/context';
 import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -11,10 +11,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       id='main-container'
       className='bg-blue-400 text-white box-border'
     >
-      <ContextProvider>
+      <ContextFunctionality>
         <Header />
         <Component {...pageProps} />
-      </ContextProvider>
+      </ContextFunctionality>
     </div>
   );
 }
