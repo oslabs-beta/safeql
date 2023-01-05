@@ -1,16 +1,14 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import { EditorBox } from '../components/EditorBox'
+import { EditorBox } from '../components/EditorBox';
 import { URLBox } from '../components/URLBox';
 import { ResponseBox } from '../components/ResponseBox';
 import { ResultsBox } from '../components/ResultsBox';
 
-
 export default function Home() {
   return (
     <div className={styles.container}>
-      
       <Head>
         <title>safeQL</title>
         <meta
@@ -19,13 +17,12 @@ export default function Home() {
         />
       </Head>
       <URLBox />
-      
+
       <div className='flex flex-row my-1'>
         <EditorBox />
         <ResponseBox />
         <ResultsBox />
       </div>
-
 
       {/* <footer className={styles.footer}>
         <a

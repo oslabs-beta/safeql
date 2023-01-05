@@ -2,26 +2,20 @@ const db = require('../../lib/db');
 
 //returns all endpoints for specified user
 
-export default async function (req, res){
-  try{
-      console.log('req.body: ', req.body);
+export default async function (req, res) {
+  try {
+    console.log('req.body: ', req.body);
     //   const values = [req.body.userid]
-      const query = `SELECT endpoint FROM endpointHistory WHERE userid = '${req.body.userid}'`
+    const query = `SELECT endpoint FROM endpointHistory WHERE userid = '${req.body.userid}'`;
 
-      const result = await db.query(
-          query      
-        );
-      console.log("result: ", result);
-      return res.status(200).json(result.rows);
-  }
-  catch(err){
-      console.log(err);
-      res.status(400).send(err);
-
+    const result = await db.query(query);
+    console.log('result: ', result);
+    return res.status(200).json(result.rows);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
   }
 }
-
-
 
 // import type { NextApiRequest, NextApiResponse } from 'next'
 

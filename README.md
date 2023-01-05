@@ -1,3 +1,8 @@
+Co Authors:
+Co-authored-by: MarikoIwata <3701668+MarikoIwata@users.noreply.github.com>
+Co-authored-by: Chris Kim <christophminkim@gmail.com>
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

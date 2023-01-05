@@ -21,7 +21,7 @@
 .editor {
   height: 600px;
   background-color: rgb(44, 49, 58);
-  margin: 1px; 
+  margin: 1px;
 }
 
 .queryComponent button {
@@ -33,7 +33,7 @@
 .response {
   height: 600px;
   background-color: rgb(44, 49, 58);
-  margin: 1px; 
+  margin: 1px;
 }
 
 .results {
