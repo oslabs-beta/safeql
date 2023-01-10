@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import '../styles/components.css';
-import '../styles/output.css';
+// import '../styles/output.css';
 import Header from '../components/Header';
 import { ContextFunctionality } from '../src/context';
 import type { AppProps } from 'next/app';

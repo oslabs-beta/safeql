@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "tw:dev": "tailwindcss -i ./styles/input.css -o ./styles/output.css --watch"
+    "tw:dev": "tailwindcss -i ./styles/input.css -o ./styles/output.css --watch",
+    "schema": "nodemon src/schema.js"
   },
   "dependencies": {
     "@apollo/server": "^4.1.1",
