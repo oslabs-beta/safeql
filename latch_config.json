@@ -1,0 +1,7 @@
+{
+  "Admin": {
+    "depthLimit": "100",
+    "rateLimit": "100",
+    "costLimit": "100"
+  }
+}

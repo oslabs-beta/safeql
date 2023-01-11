@@ -10,6 +10,11 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+import { LatchQL, jwtController } from 'latchql';
+const latchRouter = require('./routes/latchRout')
+
+
+
 app
   .prepare()
   .then(() => {
@@ -24,6 +29,7 @@ app
       return res.send('test');
     });
     //routes and middleware go here!
+    // server.use('/testLatch', latchRouter);
 
     server
       .listen(port, () => {
