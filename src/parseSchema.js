@@ -8,25 +8,6 @@ const schema = `
   }
   `
 
-  //how are we traversing this code?
-    //treat it like a string, turning the whole thing into one string
-    //basing separations on spaces, new lines
-
-  
-// console.log(JSON.stringify(`type Cohort {
-// id: ID
-// studentCount: Number
-// region: String
-//     }`))
-
-    //we need to ignore the spaces after a \n , to account for different peoples formatting
-    //looking for the 'type' keyword
-    //looking for an open bracket
-      //after \n, give everything before the colon
-      //space will separate the key's value/type (which we are ignoring for now)
-      //when we reach another \n, give everything before the colon to next object
-      //repeat
-
 export const parseSchema = (schema) => {
   const allSchema = []
   parse(schema).definitions.forEach((ast) => {
@@ -55,5 +36,5 @@ export const parseSchema = (schema) => {
 }
 
     // [
-    //{name: Cohort, fields:[{name: id, type: ID}, {name: studentCount, type:Number}, {name: region, type: String}]},
+    //{name: Cohort, fields:[{name: id, type: ID}], {name: studentCount, type:Number}, {name: region, type: String}]},
     // ]
