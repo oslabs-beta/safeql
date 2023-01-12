@@ -1,18 +1,22 @@
 const { buildSchema, parse, visit, print } = require('graphql');
 
-const schema = `
-  type Cohort {
-    id: ID
-    studentCount: Number
-    region: String
-  }
-  `
+/*
+type Cohort {
+  id: ID
+  studentCount: Number
+  region: String
+}
+*/
 
-export const parseSchema = (schema) => {
-  const allSchema = []
-  parse(schema).definitions.forEach((ast) => {
-    let i = 1;
-    const objectAST = {};
+type objectAST = {
+  name: { value: string },
+  fields: []
+}
+
+export const parseSchema = (schema: string) => {
+  const allSchema: [] = []
+  parse(schema).definitions.forEach((ast: objectAST) => {
+    const objectAST: {name?: string, fields?: []} = {};
     objectAST.name = ast.name.value
     objectAST.fields = [];
     // console.log('\n');
