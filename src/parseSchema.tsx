@@ -8,14 +8,14 @@ type Cohort {
 }
 */
 
-type objectAST = {
+type ObjectAST = {
   name: { value: string },
   fields: []
 }
 
 export const parseSchema = (schema: string) => {
   const allSchema: [] = []
-  parse(schema).definitions.forEach((ast: objectAST) => {
+  parse(schema).definitions.forEach((ast: ObjectAST) => {
     const objectAST: {name?: string, fields?: []} = {};
     objectAST.name = ast.name.value
     objectAST.fields = [];

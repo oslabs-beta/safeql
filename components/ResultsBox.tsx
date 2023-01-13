@@ -25,7 +25,7 @@ export const ResultsBox = () => {
   //isSecurity is initialized as false so that the Metrics page is initially displayed
   return (
     <section className='bg-blue-300 mt-2 ml-1 rounded-t-lg-1 w-1/3 box-border min-w-fit'>
-      <div className='flex justify-evenly px-1 font-bold h-15 px-2 py-2 content-center'>
+      <div className='flex justify-evenly font-bold h-15 px-2 py-2 content-center'>
         <button
           onClick={securityCheck}
           className='flex text-xl p-2'

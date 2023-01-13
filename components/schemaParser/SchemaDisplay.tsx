@@ -1,9 +1,11 @@
-function SchemaDisplay(props) {
+import { SchemaDisplayProps } from '../../src/types'
+
+function SchemaDisplay(props: SchemaDisplayProps) {
   const { name, fields } = props;
 
 /*
 type Cohort {
-  id: ID
+  id: ID 
   studentCount: Number
   region: String
 }

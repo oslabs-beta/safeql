@@ -1,5 +1,4 @@
 import { useRef, useEffect, useContext, useState } from 'react';
-import { EditorState } from '@codemirror/state';
 import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
@@ -8,17 +7,19 @@ import { graphql } from 'cm6-graphql';
 import { Context } from '../../src/context';
 import { fixedHeightEditor } from '../../src/cm6Theme';
 import { parseSchema } from "../../src/parseSchema";
+// @Types for code-mirror
+import { EditorState, Extension } from '@codemirror/state';
 
-export const SchemaInput = (props) => {
-  const editor = useRef();
+export const SchemaInput = (props: { setParsedSchema: any }) => {
+  const editor = useRef(null);
   const [schema, setSchema] = useState('');
 
   const updateSchema = EditorView.updateListener.of((v) => {
     setSchema(v.state.doc.toString());
   });
 
-  const fetchSchema = async (input) => {
-  console.log('input: ', input)
+  const fetchSchema = async (input: string) => {
+    console.log('input: ', input)
     try {
       const result = await fetch('/api/schemaEndpoint', {
         method: 'POST',
@@ -46,6 +47,7 @@ export const SchemaInput = (props) => {
       doc: schema || '',
       extensions: [
         basicSetup,
+        // @ts-ignore
         keymap.of([defaultKeymap, indentWithTab]),
         // oneDark,
         graphql(),
@@ -55,8 +57,11 @@ export const SchemaInput = (props) => {
       ],
     });
 
+    // const parent = editor !== null ? editor.current : undefined
+
     const view = new EditorView({
       state: startState,
+      // @ts-ignore
       parent: editor.current,
     });
 
@@ -67,7 +72,7 @@ export const SchemaInput = (props) => {
 
   return (
     <section className='bg-blue-300 mt-2 rounded-t-lg-1 w-1/3 box-border min-w-fit mr-1'>
-      <div className='flex justify-between px-1 font-bold h-15 px-2 py-2 content-center'>
+      <div className='flex justify-between font-bold h-15 px-2 py-2 content-center'>
         <h2 className='flex text-xl p-2'>Schema</h2>
         <button
           className='text-md bg-blue-200 rounded-lg-1 p-2 min-w-fit'
