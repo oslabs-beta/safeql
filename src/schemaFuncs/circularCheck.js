@@ -15,7 +15,7 @@ const testData = [
 ]
 
 export const circularCheck = (parsedData) => {
-  const schemaTypes = []; //not sure if we need this
+  const schemaTypes = []; 
   parsedData.forEach(object => {
     schemaTypes.push(object.name)
   })

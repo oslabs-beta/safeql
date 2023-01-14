@@ -1,10 +1,14 @@
-import { circularCheck } from "./CircularCheck"
+/*
+  format of data we are expecting:
+  an array of Schema that make circular logic
+  ex. [User, Location, Third]
 
-const testData = [
-  {name: 'NotConnected',   fields:[    {name: 'id', type: 'ID'},    {name: 'user', type:'User'}    ]  },
-  {name: 'User',   fields:[    {name: 'id', type: 'ID'},     {name: 'location', type:'Location'},    {name: 'cohort', type: 'String'}    ]  }, 
-  {name: 'Location',   fields:[    {name: 'id', type: 'ID'},    {name: 'gps', type: 'Number'},    {name: 'user', type:'Third'}    ]  },
-  {name: 'Third',   fields:[    {name: 'id', type: 'ID'},    {name: 'user', type:'User'}    ]  }  
-]
+  Want to create a nested query, and then make sure to add a non-circular subfield as final add
+  */
 
-console.log(circularCheck(test))
+export const circularAttack = (arrayOfSchema) => {
+  let attackQuery = ''
+
+  
+  
+}
