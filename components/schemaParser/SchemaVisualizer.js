@@ -1,5 +1,7 @@
 //import our schema parser function
 import SchemaDisplay from "./SchemaDisplay";
+import ReactFlow, {Background, Controls} from 'reactflow';
+import 'reactflow/dist/style.css'
 
 function SchemaVisualizer(props) {
   //LOGIC TO TRANSFORM SCHEMA INTO VISUALIZATION COMPONENTS
@@ -23,8 +25,13 @@ function SchemaVisualizer(props) {
   console.log('schemas array', schemas)
   
   return (
-    <div>
-        {schemas}
+    <div className="w-full">
+    {schemas}
+        <ReactFlow>
+          <Background />
+          <Controls />
+        </ReactFlow>
+        
     </div>
   );
 }
