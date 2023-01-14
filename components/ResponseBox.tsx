@@ -8,8 +8,8 @@ import { graphql } from 'cm6-graphql';
 import { Context } from '../src/context';
 import { fixedHeightEditor } from '../src/cm6Theme';
 
-export const ResponseBox = (props) => {
-  const responseBox = useRef();
+export const ResponseBox = (props: any) => {
+  const responseBox = useRef(null);
   const { response } = useContext(Context);
 
   useEffect(() => {
@@ -17,6 +17,7 @@ export const ResponseBox = (props) => {
       doc: response || '',
       extensions: [
         basicSetup,
+        // @ts-ignore
         keymap.of([defaultKeymap, indentWithTab]),
         oneDark,
         graphql(),
@@ -26,6 +27,7 @@ export const ResponseBox = (props) => {
 
     const view = new EditorView({
       state: startState,
+      // @ts-ignore
       parent: responseBox.current,
     });
 

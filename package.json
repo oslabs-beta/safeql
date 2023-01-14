@@ -18,6 +18,7 @@
     "@codemirror/theme-one-dark": "^6.1.0",
     "@codemirror/view": "^6.5.1",
     "@prisma/client": "^4.6.1",
+    "@types/codemirror": "^5.60.6",
     "cm6-graphql": "^0.0.1",
     "codemirror": "^6.0.1",
     "eslint": "8.27.0",

@@ -1,7 +1,10 @@
 //import our schema parser function
 import SchemaDisplay from "./SchemaDisplay";
+import { SchemaVisualizerProps } from '../../src/types';
 
-function SchemaVisualizer(props) {
+
+
+function SchemaVisualizer(props: SchemaVisualizerProps) {
   //LOGIC TO TRANSFORM SCHEMA INTO VISUALIZATION COMPONENTS
   //1. Pass our props.schema from our input into our parser function
   //SchemaParser(props.schema) => out comes our array of objects 

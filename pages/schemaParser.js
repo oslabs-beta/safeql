@@ -7,6 +7,8 @@ import { useState } from 'react';
 export default function SchemaParser() {
 
   const [parsedSchema, setParsedSchema] = useState('')
+  
+  // const [url, setUrl] = useState<string>('');
 
   return (
     <div className={styles.container}>
