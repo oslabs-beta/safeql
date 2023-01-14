@@ -1,6 +1,7 @@
 const db = require('../../lib/db');
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function (req, res) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     console.log('req.body: ', req.body);
     const query = `DELETE FROM endpointhistory WHERE endpoint = '${req.body.endpoint}' AND userid = '${req.body.userid}' RETURNING *`;

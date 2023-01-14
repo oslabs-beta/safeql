@@ -1,8 +1,9 @@
 const db = require('../../lib/db');
+import { NextApiRequest, NextApiResponse } from 'next';
 
 //create user functionality - creates a user and password
 
-export default async function (req, res) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     console.log('req.body: ', req.body);
     const query = `INSERT INTO users(username, password)
