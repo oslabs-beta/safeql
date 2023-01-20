@@ -1,8 +1,9 @@
-import db from '../../lib/db';
+const db = require('../../lib/db');
+import { NextApiRequest, NextApiResponse } from 'next';
 
 //save endpoint functionality - Save a single endpoint with associated user id.
 
-export default async function (req, res) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     console.log('req.body: ', req.body);
     const query = `INSERT INTO endpointhistory(endpoint, userid)
@@ -13,6 +14,6 @@ export default async function (req, res) {
     return res.status(200).json(result.rows[0]);
   } catch (err) {
     console.log(err);
-    res.status(400).send(error);
+    res.status(400).send(err);
   }
 }

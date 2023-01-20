@@ -1,6 +1,7 @@
 import { parseSchema } from "../../src/parseSchema";
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function (req, res) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   const schema  = req.body;
   try {
     const postParsing = await parseSchema(schema) // expect parsedSchema [] //however undefined -> "test"

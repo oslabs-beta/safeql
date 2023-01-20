@@ -1,8 +1,9 @@
 const db = require('../../lib/db');
+import { NextApiRequest, NextApiResponse } from 'next';
 
 //returns all endpoints for specified user
 
-export default async function (req, res) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   try {
     console.log('req.body: ', req.body);
     //   const values = [req.body.userid]
