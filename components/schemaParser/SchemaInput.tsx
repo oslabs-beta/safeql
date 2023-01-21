@@ -2,11 +2,12 @@ import { useRef, useEffect, useContext, useState } from 'react';
 import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
-import { oneDark } from '@codemirror/theme-one-dark';
+import { syntaxHighlighting } from "@codemirror/language";
 import { graphql } from 'cm6-graphql';
 import { Context } from '../../src/context';
-import { fixedHeightEditor } from '../../src/cm6Theme';
+import { fixedHeightEditor, customHighlightStyle } from '../../src/cm6Theme';
 import { parseSchema } from "../../src/parseSchema";
+import { circularCheck } from '../../src/schemaFuncs/circularCheck';
 // @Types for code-mirror
 import { EditorState, Extension } from '@codemirror/state';
 
@@ -19,7 +20,7 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
   });
 
   const fetchSchema = async (input: string) => {
-    console.log('input: ', input)
+    // console.log('input: ', input)
     try {
       const result = await fetch('/api/schemaEndpoint', {
         method: 'POST',
@@ -29,7 +30,7 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
         body: JSON.stringify(input)
       });
       const toVisualize = await result.json();
-      console.log('visualize: ', toVisualize)
+      // console.log('visualize: ', toVisualize)
       return toVisualize;
 
     } catch (error) {
@@ -39,6 +40,7 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
 
   const submitSchema = async () => {
     const parsedResult = await fetchSchema(schema);
+    console.log('Array of circular results', circularCheck(parsedResult))
     props.setParsedSchema(parsedResult);
   };
 
@@ -49,11 +51,10 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
         basicSetup,
         // @ts-ignore
         keymap.of([defaultKeymap, indentWithTab]),
-        // oneDark,
         graphql(),
         updateSchema,
         fixedHeightEditor,
-        // highlighted()
+        syntaxHighlighting(customHighlightStyle),
       ],
     });
 

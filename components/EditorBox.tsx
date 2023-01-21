@@ -4,13 +4,13 @@ import { useRef, useEffect, useContext, useState } from 'react';
 import { EditorState } from '@codemirror/state';
 import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from '@codemirror/view';
+import { syntaxHighlighting } from "@codemirror/language"
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
-import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql';
 import { Context } from '../src/context';
 import { queryEndpoint } from '../src/queryService';
 import { ResponseBox } from './ResponseBox';
-import { fixedHeightEditor } from '../src/cm6Theme';
+import { fixedHeightEditor, customHighlightStyle } from '../src/cm6Theme';
 
 export const EditorBox = () => {
   const editor = useRef();
@@ -38,12 +38,12 @@ export const EditorBox = () => {
       doc: query || '',
       extensions: [
         basicSetup,
+        //@ts-ignore
         keymap.of([defaultKeymap, indentWithTab]),
-        // oneDark,
         graphql(),
+        syntaxHighlighting(customHighlightStyle),
         updateQuery,
         fixedHeightEditor,
-        // highlighted()
       ],
     });
 

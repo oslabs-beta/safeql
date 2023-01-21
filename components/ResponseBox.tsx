@@ -1,12 +1,14 @@
 import { useRef, useEffect, useContext, useState } from 'react';
 import { EditorState } from '@codemirror/state';
-import { EditorView, basicSetup } from 'codemirror';
+import { EditorView } from 'codemirror';
+import { customSetup } from '../src/cmCustomSetup'
 import { keymap } from '@codemirror/view';
+import { syntaxHighlighting } from "@codemirror/language"
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
-import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql';
 import { Context } from '../src/context';
-import { fixedHeightEditor } from '../src/cm6Theme';
+import { fixedHeightResponse, customHighlightStyle } from '../src/cm6Theme';
+
 
 export const ResponseBox = (props: any) => {
   const responseBox = useRef(null);
@@ -16,12 +18,12 @@ export const ResponseBox = (props: any) => {
     const startState = EditorState.create({
       doc: response || '',
       extensions: [
-        basicSetup,
+        customSetup,
         // @ts-ignore
         keymap.of([defaultKeymap, indentWithTab]),
-        oneDark,
+        syntaxHighlighting(customHighlightStyle),
         graphql(),
-        fixedHeightEditor,
+        fixedHeightResponse,
       ],
     });
 
