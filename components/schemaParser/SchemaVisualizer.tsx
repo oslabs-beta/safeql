@@ -15,15 +15,15 @@ function SchemaVisualizer(props: SchemaVisualizerProps) {
     //take each object and display each subfield with Type
     //table
 //stretch - massive visualization with a vis library
-   console.log('props.parsedSchema', props.parsedSchema)
+  //  console.log('props.parsedSchema', props.parsedSchema)
   let schemas = [];
 
   for (let i = 0; i < props.parsedSchema.length; i++) {
     const {name, fields} = props.parsedSchema[i]
     schemas.push(<SchemaDisplay name={name} fields={fields} key={i}/>)
-    console.log('in for loop, schemaVisualizer');
+    // console.log('in for loop, schemaVisualizer');
   }
-  console.log('schemas array', schemas)
+  // console.log('schemas array', schemas)
   
   return (
     <div>

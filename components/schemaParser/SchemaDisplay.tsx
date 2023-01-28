@@ -14,6 +14,7 @@ type Cohort {
   return (
     <>
       <table className='border-solid border-white bg-blue-300 mt-2 ml-1 rounded-t-lg-1 w-1/3 box-border min-w-fit'>
+        <tbody>
         <tr>
           <th>{name}</th>
         </tr>
@@ -25,6 +26,7 @@ type Cohort {
             </tr>
           );
         })}
+        </tbody>
       </table>
     </>
   );

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "windows": "concurrently \"npm run dev\" \"npm run express\"",
     "express": "nodemon server/server.ts",
     "build": "next build",
     "start": "next start",
@@ -21,6 +22,8 @@
     "@types/codemirror": "^5.60.6",
     "cm6-graphql": "^0.0.1",
     "codemirror": "^6.0.1",
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
     "eslint": "8.27.0",
     "eslint-config-next": "13.0.3",
     "express": "^4.18.2",

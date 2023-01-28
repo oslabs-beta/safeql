@@ -1,5 +1,5 @@
 import { check } from "prettier";
-import { create } from "ts-node";
+// import { create } from "ts-node"; //having this breaks the rendering, and I don't see it used anywhere here.
 
 /*
   want to check if there is a reference to another schema 
@@ -19,11 +19,10 @@ export const circularCheck = (parsedData) => {
   parsedData.forEach(object => {
     schemaTypes.push(object.name)
   })
-  // console.log(schemaTypes)
   
   const createGraph = {};
 
-  //declare here so it is available in global scope
+  //declare here so it is available in funciton scope
   let propName;
 
   //this creates the non-directed adjacency graph
@@ -44,8 +43,8 @@ export const circularCheck = (parsedData) => {
     }  
   });
   
-  // console.log(createGraph)
   let circularSchemaNames;
+  let allCircular = [];
    //Each schema has to be checked, starting the queue over, or we may get false negative
    for (let i = 0; i < schemaTypes.length; i++){
   //Now that we have our graph, we can work on finding if there is a circular reference, but we have to determine a start. We can use our SchemaTypes set?
@@ -63,13 +62,14 @@ export const circularCheck = (parsedData) => {
       //Our end case scenario is the first Type that started the while loop, in this case Name
       //If circular reference, We are returning the checkedSchemaTypes of the current iteration to display our circular references
       if (current === start){
-        return Array.from(checkedSchemaTypes)
+        allCircular.push(Array.from(checkedSchemaTypes))
       } 
 
       queue.push(...createGraph[current])
     }
     //returns false if there are no issues
   }
+  if (allCircular.length > 0) return allCircular;
   return false;
 }
 
