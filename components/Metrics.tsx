@@ -6,7 +6,7 @@ function Metrics() {
 
   return (
     <section className='mx-2'>
-      <h1>Metrics</h1>
+      <h1 className='text-center mb-5 font-bold'>Metric Analysis</h1>
       <div>Query Speed: {analysisData.querySpeed}</div>
     </section>
   );
