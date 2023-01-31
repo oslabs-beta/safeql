@@ -11,7 +11,8 @@
     "lint": "next lint",
     "tw:dev": "tailwindcss -i ./styles/input.css -o ./styles/output.css --watch",
     "schema": "nodemon src/schema.js",
-    "test": "jest"
+    "test": "jest --verbose",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@apollo/server": "^4.1.1",
@@ -45,6 +46,7 @@
     "@types/next": "^9.0.0",
     "@types/pg": "^8.6.6",
     "@types/react": "18.0.26",
+    "cypress": "^12.4.1",
     "eslint-config-prettier": "^8.5.0",
     "jest": "^29.4.1",
     "jest-environment-jsdom": "^29.4.1",
