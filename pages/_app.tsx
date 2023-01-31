@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     >
       <ContextFunctionality>
         <Header />
-        <Navbar />
         <Component {...pageProps} />
       </ContextFunctionality>
     </div>
