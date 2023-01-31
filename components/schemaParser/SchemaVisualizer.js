@@ -4,18 +4,45 @@ import {useState, useCallback} from 'react';
 import ReactFlow, {Background, Controls, applyEdgeChanges, applyNodeChanges} from 'reactflow';
 import 'reactflow/dist/style.css'
 
+//https://docs.iconify.design/icon-components/react/
+
 const initialNodes = [
   {
     id: '1', //required for react flow
     position: {x:10, y:100}, //required for react flow
-    data: {label:'Hello'},
+    data: {
+      label:'Hello',
+      colulmns: [{scalar: 'myName', kind : 'myKind'},{scalar: 'myName2', kind : 'myKind2'} ]
+    },
     type: 'input',
   },
   {
     id:'2',
     position: {x:200, y:200},
     data: {label: 'World'}
+  },
+  {
+    id: 'User',
+    type: 'model',
+    data: {
+      columns: [
+        {
+          displayType: 'Int',
+          name: 'firstColumn',
+          kind: 'scalar'
+        },
+        {
+          displayType: 'Int',
+          name: 'secondColumn',
+          kind: 'scalar'
+        }
+      ],
+      label: 'some label',
+      type: 'model'
+    },
+    position: {x:200, y: 380} 
   }
+  
 ];
 
 const initialEdges = [
@@ -58,6 +85,7 @@ function SchemaVisualizer(props) {
           onNodesChange={onNodesChange}
           edges ={edges}
           onEdgesChagne={onEdgesChange}
+          minZoom={0.05}
         >
           <Background />
           <Controls />
