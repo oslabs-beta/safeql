@@ -28,13 +28,13 @@ export const ResultsBox = () => {
       <div className='flex justify-evenly font-bold h-15 px-2 py-2 content-center'>
         <button
           onClick={securityCheck}
-          className='flex text-xl p-2'
+          className='flex text-xl p-2 hover:text-blue-100'
         >
           Security
         </button>
         <button
           onClick={runAnalysis}
-          className='flex text-xl p-2'
+          className='flex text-xl p-2 hover:text-blue-100'
         >
           Metrics
         </button>

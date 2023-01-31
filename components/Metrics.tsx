@@ -5,7 +5,7 @@ function Metrics() {
   const { analysisData } = useContext(Context);
 
   return (
-    <section>
+    <section className='mx-2'>
       <h1>Metrics</h1>
       <div>Query Speed: {analysisData.querySpeed}</div>
     </section>

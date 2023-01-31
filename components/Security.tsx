@@ -5,7 +5,7 @@ function Security() {
   const { introspectionOn } = useContext(Context);
 
   return (
-    <section>
+    <section className='mx-2'>
       <h1>Security</h1>
       <div>Introspection: {introspectionOn ? 'On' : 'Off'}</div>
       <div>
