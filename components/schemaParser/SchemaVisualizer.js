@@ -6,13 +6,16 @@ import 'reactflow/dist/style.css'
 
 //https://docs.iconify.design/icon-components/react/
 
+    const testData = [
+   
+    ]
+
 const initialNodes = [
   {
     id: '1', //required for react flow
     position: {x:10, y:100}, //required for react flow
     data: {
       label:'Hello',
-      colulmns: [{scalar: 'myName', kind : 'myKind'},{scalar: 'myName2', kind : 'myKind2'} ]
     },
     type: 'input',
   },
@@ -25,20 +28,7 @@ const initialNodes = [
     id: 'User',
     type: 'model',
     data: {
-      columns: [
-        {
-          displayType: 'Int',
-          name: 'firstColumn',
-          kind: 'scalar'
-        },
-        {
-          displayType: 'Int',
-          name: 'secondColumn',
-          kind: 'scalar'
-        }
-      ],
-      label: 'some label',
-      type: 'model'
+      label: 'some label 2',
     },
     position: {x:200, y: 380} 
   }
@@ -84,7 +74,7 @@ function SchemaVisualizer(props) {
           nodes={nodes}
           onNodesChange={onNodesChange}
           edges ={edges}
-          onEdgesChagne={onEdgesChange}
+          onEdgesChange={onEdgesChange}
           minZoom={0.05}
         >
           <Background />
