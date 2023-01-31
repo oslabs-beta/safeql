@@ -4,7 +4,7 @@ import { useRef, useEffect, useContext, useState } from 'react';
 import { EditorState } from '@codemirror/state';
 import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from '@codemirror/view';
-import { syntaxHighlighting } from "@codemirror/language"
+import { syntaxHighlighting } from '@codemirror/language';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
 import { graphql } from 'cm6-graphql';
 import { Context } from '../src/context';
