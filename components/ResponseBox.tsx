@@ -45,7 +45,7 @@ export const ResponseBox = (props: any) => {
       </div>
       <div
         ref={responseBox}
-        className='response'
+        className='response ml-3'
       ></div>
     </section>
   );
