@@ -62,7 +62,7 @@ export const EditorBox = () => {
       <div className='flex justify-between px-1 font-bold h-15 px-2 py-2 content-center'>
         <h2 className='flex text-xl p-2'>Sandbox</h2>
         <button
-          className='text-md bg-blue-200 rounded-lg-1 p-2 min-w-fit'
+          className='text-md bg-blue-200 rounded-lg-1 p-2 min-w-fit hover:bg-blue-100'
           onClick={submitQuery}
         >
           ▶ Run
