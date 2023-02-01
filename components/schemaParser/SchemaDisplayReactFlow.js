@@ -3,45 +3,11 @@ import ReactFlow, {Background, Controls, applyEdgeChanges, applyNodeChanges} fro
 import 'reactflow/dist/style.css'
 import CustomTableNode from "./CustomTableNode";
 
+import {nodes as customNodes, edges as customEdges} from './ReformatSchemaJSON'
+
 const nodeTypes = {
   custom: CustomTableNode,
 };
-
-//STEP 1: function that creates as many nodes as there are types in the schema
-const customNodes = [
-  {
-    id: '1',
-    type: 'custom',
-    data: {
-      tableName: 'Cohort',
-      id: 'ID',
-      studentCount: 'Number',
-      region: 'String'
-    },
-    position: {x:100, y: 100} 
-  },
-  {
-    id: '2',
-    type: 'custom',
-    data: {
-      tableName: 'Student',
-      id: 'ID',
-      teacher: 'Type',
-      region: 'String'
-    },
-    position: {x:300, y: 150} 
-  }
-  
-];
-
-const customEdges = [
-  {
-    id: '1-2',
-    source: '1', //where edge begins
-    target: '2', //where edge ends
-    type: 'step'//default is curved line
-  }
-]
 
 function SchemaDisplayReactFlow(props) {
 

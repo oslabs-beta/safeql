@@ -1,13 +1,10 @@
-import { useRef, useEffect, useContext, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { EditorState } from '@codemirror/state';
 import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
-import { oneDark } from '@codemirror/theme-one-dark';
 import { graphql } from 'cm6-graphql';
-import { Context } from '../../src/context';
 import { fixedHeightEditor } from '../../src/cm6Theme';
-import { parseSchema } from "../../src/parseSchema";
 
 export const SchemaInput = (props) => {
   const editor = useRef();
