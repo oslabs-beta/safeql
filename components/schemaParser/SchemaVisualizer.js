@@ -6,9 +6,7 @@ import 'reactflow/dist/style.css'
 
 //https://docs.iconify.design/icon-components/react/
 
-    const testData = [
-   
-    ]
+
 
 const initialNodes = [
   {
@@ -26,7 +24,7 @@ const initialNodes = [
   },
   {
     id: 'User',
-    type: 'model',
+    type: 'CustomNode',
     data: {
       label: 'some label 2',
     },
