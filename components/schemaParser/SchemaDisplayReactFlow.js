@@ -1,5 +1,3 @@
-//import our schema parser function
-import SchemaDisplay from "./SchemaDisplay";
 import {useState, useCallback} from 'react';
 import ReactFlow, {Background, Controls, applyEdgeChanges, applyNodeChanges} from 'reactflow';
 import 'reactflow/dist/style.css'
@@ -9,44 +7,34 @@ const nodeTypes = {
   custom: CustomTableNode,
 };
 
-//https://docs.iconify.design/icon-components/react/
-
 //STEP 1: function that creates as many nodes as there are types in the schema
-const initialNodes = [
+const customNodes = [
   {
-    id: '1', //required for react flow
-    position: {x:10, y:100}, //required for react flow
-    data: {
-      label:'Hello',
-    },
-    type: 'input',
-  },
-  {
-    id:'2',
-    position: {x:200, y:200},
-    data: {label: 'World'}
-  },
-  {
-    id: '3',
+    id: '1',
     type: 'custom',
     data: {
-      label: 'some label 2',
+      tableName: 'Cohort',
+      id: 'ID',
+      studentCount: 'Number',
+      region: 'String'
     },
-    position: {x:200, y: 380} 
+    position: {x:100, y: 100} 
   },
-  // {
-  //   id: '4',
-  //   type: 'custom',
-  //   data: {
-  //     label: 'some label 2',
-  //   },
-  //   position: {x:300, y: 480} 
-  // }
+  {
+    id: '2',
+    type: 'custom',
+    data: {
+      tableName: 'Student',
+      id: 'ID',
+      teacher: 'Type',
+      region: 'String'
+    },
+    position: {x:300, y: 150} 
+  }
   
 ];
 
-
-const initialEdges = [
+const customEdges = [
   {
     id: '1-2',
     source: '1', //where edge begins
@@ -55,10 +43,10 @@ const initialEdges = [
   }
 ]
 
+function SchemaDisplayReactFlow(props) {
 
-function SchemaVisualizer2(props) {
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
+  const [nodes, setNodes] = useState(customNodes);
+  const [edges, setEdges] = useState(customEdges);
 
   const onNodesChange = useCallback(
     (changes)=> setNodes((nds)=>applyNodeChanges(changes, nds)), []
@@ -97,4 +85,4 @@ function SchemaVisualizer2(props) {
   );
 }
 
-export default SchemaVisualizer2;
+export default SchemaDisplayReactFlow;

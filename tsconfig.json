@@ -25,7 +25,7 @@
     "additional.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/schemaParser/ReformatSchemaJSON.js"  ],
   "exclude": [
     "node_modules"
   ]

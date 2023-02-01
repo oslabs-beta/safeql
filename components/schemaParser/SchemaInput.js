@@ -16,7 +16,13 @@ export const SchemaInput = (props) => {
     id: ID
     studentCount: Number
     region: String
-  }`
+  },
+  type Student {
+    id: ID
+    teacher: Type
+    region: String
+  },
+  `
   );
 
   const updateSchema = EditorView.updateListener.of((v) => {
@@ -34,7 +40,7 @@ export const SchemaInput = (props) => {
         body: JSON.stringify(input)
       });
       const toVisualize = await result.json();
-      console.log('visualize: ', toVisualize)
+      console.log('visualize in SchemaInput: ', toVisualize)
       return toVisualize;
 
     } catch (error) {

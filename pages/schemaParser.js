@@ -3,7 +3,8 @@ import styles from '../styles/Home.module.css';
 import { SchemaInput } from '../components/schemaParser/SchemaInput';
 // import OverviewFlow from '../components/schemaParser/OverviewFlow';
 import { useState } from 'react';
-import SchemaVisualizer2 from '../components/schemaParser/SchemaVisualizer2';
+import ReformatSchemaJSON from '../components/schemaParser/ReformatSchemaJSON';
+import SchemaDisplayReactFlow from '../components/schemaParser/SchemaDisplayReactFlow';
 
 export default function SchemaParser() {
 
@@ -21,11 +22,13 @@ export default function SchemaParser() {
 
       <div className='flex flex-row my-1'>
         <SchemaInput 
-
           setParsedSchema={setParsedSchema}
  />
-        <SchemaVisualizer2
+        <ReformatSchemaJSON
           parsedSchema={parsedSchema} />
+        
+      <SchemaDisplayReactFlow/>
+
       </div>
 
     </div>
