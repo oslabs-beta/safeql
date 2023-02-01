@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div
       id='main-container'
-      className='bg-blue-400 text-white box-border'
+      className='bg-blue-400 text-white box-border h-screen'
     >
       <ContextFunctionality>
         <Header />
