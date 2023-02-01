@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { SchemaInput } from '../components/schemaParser/SchemaInput';
-import OverviewFlow from '../components/schemaParser/OverviewFlow';
+// import OverviewFlow from '../components/schemaParser/OverviewFlow';
 import { useState } from 'react';
+import SchemaVisualizer2 from '../components/schemaParser/SchemaVisualizer2';
 
 export default function SchemaParser() {
 
@@ -23,7 +24,7 @@ export default function SchemaParser() {
 
           setParsedSchema={setParsedSchema}
  />
-        < OverviewFlow
+        <SchemaVisualizer2
           parsedSchema={parsedSchema} />
       </div>
 
