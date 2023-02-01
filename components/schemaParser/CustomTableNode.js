@@ -2,17 +2,15 @@ import React, { memo } from 'react';
 
 // CustomTableNode will return a unique node for each SchemaDisplayReactFlow Custom Nodes
 
-function customNodeFormat(props){
-console.log('customNodeFormat props', props)
+function CustomNodeDataField(props){
+console.log('customNodeFields props', props)
 
   return(
     <>
       <table className='border-solid border-white bg-blue-300 mt-2 ml-1 rounded-t-lg-1 w-1/3 box-border min-w-fit'>
-        <tr key={id}>
-        
-        {/* loop through data props to make key */}
-        {/* loop through data props to make value of that key */}
-
+        <tr>
+          <td>{props.fieldName}</td>
+          <td>{props.fieldType}</td>
         </tr>
       </table>
     </>
@@ -21,34 +19,22 @@ console.log('customNodeFormat props', props)
 
   function CustomTableNode(props){
     console.log('props in CustomTableNode',props)
-    const { tableName } = props.data;
+
+    const dataArray = Object.entries(props.data);
+    console.log('dataArray', dataArray)
 
     return (
        <>
-        <div>{tableName}</div>
+        <div>{props.data.tableName}</div>
 
-        <customNodeFormat
-          id = {props.id}
-        />
-        <table>
-          <tr>
-            <td>{props.data.id}</td>
-            <td>{props.data.id}</td>
-          </tr>
-          <tr>
-            <td>{props.data.tableName}</td>
-            <td>{props.data.tableName}</td>
-          </tr>
-          <tr>
-            <td>{props.data.studentCount}</td>
-            <td>{props.data.studentCount}</td>
-          </tr>
-          <tr>
-            <td>{props.data.region}</td>
-            <td>{props.data.region}</td>
-          </tr>
-        </table>
-       
+        {dataArray.map((pair) => {
+          return(
+            <CustomNodeDataField
+              fieldName = {pair[0]}
+              fieldType= {pair[1]}
+            />
+          )
+        })}
        </>
     )
   }
