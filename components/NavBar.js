@@ -21,7 +21,12 @@ function NavBar() {
           return (
             <ul className='p-2 mx-2 bg-blue-300 rounded-md hover:bg-blue-200 cursor-pointer'>
               <Link href={link.path}>
-                <li className='font-bold' key={index}>{link.name}</li>
+                <li
+                  className='font-bold'
+                  key={index}
+                >
+                  {link.name}
+                </li>
               </Link>
             </ul>
           );
