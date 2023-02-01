@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 const navigationRoutes = [
   {
-    name: 'Home',
+    name: 'Query',
     path: '/',
   },
   {
-    name: 'SchemaParser',
+    name: 'Schema',
     path: '/schemaParser',
   },
 ];
