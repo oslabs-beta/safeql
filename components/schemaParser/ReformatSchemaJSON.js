@@ -37,20 +37,31 @@ export const edges = [
 
 // //update to reformat SchemaJSON to look like custom nodes
 
-// function ReformatSchemaJSON(props) {
-  
-//   for (let i = 0; i < props.parsedSchema.length; i++) {
-//     const {name, fields} = props.parsedSchema[i]
-//     schemas.push(<CustomTableNode name={name} fields={fields} key={i}/>)
-//     // console.log('in for loop, schemaVisualizer');
-//   }
-//   console.log('schemas array', schemas)
-  
-//   return (
-//     <div>
-//         {schemas}
-//     </div>
-//   );
-// }
+function ReformatSchemaJSON(props) {
+  console.log('ReformatSchemaJSON props', props)
+//map through field part
+let count = 1;
+//in the map increase count each time at end of map
+// {
+//   type: 'custom',
+//   position: {x:100, y: 100}
+//   id: count,
+//   data: {
+//     tableName: 'Cohort',
+//     id: 'ID',
+//     studentCount: 'Number',
+//     region: 'String'
+//   },
 
-// export default ReformatSchemaJSON;
+// },
+
+  console.log('nodes array', nodes)
+  
+  return (
+    <div>
+       
+    </div>
+  );
+}
+
+export default ReformatSchemaJSON;

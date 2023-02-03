@@ -3,7 +3,6 @@ import React, { memo } from 'react';
 // CustomTableNode will return a unique node for each SchemaDisplayReactFlow Custom Nodes
 
 function CustomNodeDataField(props){
-console.log('customNodeFields props', props)
 
   return(
     <>
@@ -18,10 +17,8 @@ console.log('customNodeFields props', props)
 };
 
   function CustomTableNode(props){
-    console.log('props in CustomTableNode',props)
 
     const dataArray = Object.entries(props.data);
-    console.log('dataArray', dataArray)
 
     return (
        <>
