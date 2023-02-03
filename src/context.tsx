@@ -47,6 +47,35 @@ const ContextFunctionality = ({ children }: Props) => {
   });
   const [isSecurity, setIsSecurity] = useState<boolean>(false);
 
+  //will need to add TS typing here
+  const defaultNodes =[
+    {
+      id: '1',
+      type: 'custom',
+      data: {
+        tableName: 'Cohort',
+        id: 'ID',
+        studentCount: 'Number',
+        region: 'String'
+      },
+      position: {x:100, y: 100} 
+    },
+    {
+      id: '2',
+      type: 'custom',
+      data: {
+        tableName: 'Student',
+        id: 'ID',
+        teacher: 'Type',
+        region: 'String'
+      },
+      position: {x:300, y: 150} 
+    }
+  ];
+  const [initialNodes, setInitialNodes] = useState(defaultNodes)
+
+ 
+
   //Initialize the state
   const initialState = {
     url,
@@ -59,6 +88,8 @@ const ContextFunctionality = ({ children }: Props) => {
     setAnalysisData,
     isSecurity,
     setIsSecurity,
+    initialNodes,
+    setInitialNodes
   };
 
   return (

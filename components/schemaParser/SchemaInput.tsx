@@ -13,7 +13,19 @@ import { EditorState, Extension } from '@codemirror/state';
 
 export const SchemaInput = (props: { setParsedSchema: any }) => {
   const editor = useRef(null);
-  const [schema, setSchema] = useState('');
+  const [schema, setSchema] = useState(
+    `type Cohort {
+      id: ID
+      studentCount: Number
+      region: String
+    },
+    type Student {
+      id: ID
+      teacher: Type
+      region: String
+    },
+    `
+  );
 
   const updateSchema = EditorView.updateListener.of((v) => {
     setSchema(v.state.doc.toString());
