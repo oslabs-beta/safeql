@@ -25,12 +25,14 @@ function DataField(props){
         <div>{props.data.tableName}</div>
 
         {dataArray.map((pair) => {
+          if (pair[0] !== 'tableName'){
           return(
             < DataField
               fieldName = {pair[0]}
               fieldType= {pair[1]}
             />
           )
+          }
         })}
        </>
     )

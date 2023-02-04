@@ -19,11 +19,21 @@ type ContextType = {
   setAnalysisData: Dispatch<SetStateAction<AnalysisType>>;
   isSecurity: boolean;
   setIsSecurity: Dispatch<SetStateAction<boolean>>;
+  initialNodes: Array<NodeType>;
+  setInitialNodes: Dispatch<SetStateAction<Array<NodeType>>>
 };
 
 type AnalysisType = {
   querySpeed: string | null;
 };
+
+type NodeType = {
+  type: String,
+  id: String,
+  position: {x:Number, y: Number},
+  // [data: string] : any
+  data: {[key: string]: string} 
+}
 
 type Props = {
   children: React.ReactNode;
@@ -48,9 +58,9 @@ const ContextFunctionality = ({ children }: Props) => {
   const [isSecurity, setIsSecurity] = useState<boolean>(false);
 
   //will need to add TS typing here
-  const defaultNodes =[
+  const defaultNodes = [
     {
-      id: '1',
+      id: '0',
       type: 'custom',
       data: {
         tableName: 'Cohort',
@@ -58,7 +68,7 @@ const ContextFunctionality = ({ children }: Props) => {
         studentCount: 'Number',
         region: 'String'
       },
-      position: {x:100, y: 100} 
+      position: {x:25, y: 25} 
     },
     {
       id: '2',
@@ -69,10 +79,10 @@ const ContextFunctionality = ({ children }: Props) => {
         teacher: 'Type',
         region: 'String'
       },
-      position: {x:300, y: 150} 
+      position: {x:25, y: 225} 
     }
   ];
-  const [initialNodes, setInitialNodes] = useState(defaultNodes)
+  const [initialNodes, setInitialNodes] = useState([])
 
  
 

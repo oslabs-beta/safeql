@@ -8,24 +8,26 @@ import { Context } from '../../src/context';
 import { fixedHeightEditor, customHighlightStyle } from '../../src/cm6Theme';
 import { parseSchema } from "../../src/parseSchema";
 import { circularCheck } from '../../src/schemaFuncs/circularCheck';
+import { constructRFNodes } from '../../src/schemaFuncs/constructRFNodes';
 // @Types for code-mirror
 import { EditorState, Extension } from '@codemirror/state';
 
 export const SchemaInput = (props: { setParsedSchema: any }) => {
+  const { setInitialNodes, initialNodes } = useContext(Context)
   const editor = useRef(null);
-  const [schema, setSchema] = useState(
-    `type Cohort {
-      id: ID
-      studentCount: Number
-      region: String
-    },
-    type Student {
-      id: ID
-      teacher: Type
-      region: String
-    },
-    `
-  );
+  const [schema, setSchema] = useState('');
+  //   `type Cohort {
+  //     id: ID
+  //     studentCount: Number
+  //     region: String
+  //   },
+  //   type Student {
+  //     id: ID
+  //     teacher: Type
+  //     region: String
+  //   },
+  //   `
+  // );
 
   const updateSchema = EditorView.updateListener.of((v) => {
     setSchema(v.state.doc.toString());
@@ -52,8 +54,13 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
 
   const submitSchema = async () => {
     const parsedResult = await fetchSchema(schema);
-    console.log('Array of circular results', circularCheck(parsedResult))
+    // console.log('Array of circular results', circularCheck(parsedResult))
+    // console.log('parsed result', parsedResult)
+    // console.log('node result',constructRFNodes(parsedResult))
+    setInitialNodes(constructRFNodes(parsedResult))
+    console.log('updatedNodes', initialNodes)
     props.setParsedSchema(parsedResult);
+    //convert to initialNodes format and setInitialNodes
   };
 
   useEffect(() => {
