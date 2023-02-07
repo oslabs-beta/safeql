@@ -40,3 +40,7 @@
   background-color: ghostwhite;
   width: 33%;
 }
+
+.cm-editor.cm-focused {
+  outline: none !important;
+}
