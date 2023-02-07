@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import NavBar from './NavBar';
 
 function Header() {
   return (
@@ -9,6 +10,7 @@ function Header() {
         width={180}
         height={14}
       />
+      <NavBar />
     </div>
   );
 }
