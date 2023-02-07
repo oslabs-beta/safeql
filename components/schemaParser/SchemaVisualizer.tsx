@@ -1,3 +1,5 @@
+//This is old and will be deleted at the end of ReactFlow development
+
 //import our schema parser function
 import SchemaDisplay from "./SchemaDisplay";
 import { SchemaVisualizerProps } from '../../src/types';

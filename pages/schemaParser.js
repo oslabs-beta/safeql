@@ -3,10 +3,14 @@ import styles from '../styles/Home.module.css';
 import { SchemaInput } from '../components/schemaParser/SchemaInput';
 import SchemaVisualizer from '../components/schemaParser/SchemaVisualizer';
 import { useState } from 'react';
+import SchemaDisplayReactFlow from '../components/schemaParser/SchemaDisplayReactFlow';
+
+
 
 export default function SchemaParser() {
 
-  const [parsedSchema, setParsedSchema] = useState('')
+  const [parsedSchema, setParsedSchema] = useState('');
+ 
   
   // const [url, setUrl] = useState<string>('');
 
@@ -22,11 +26,11 @@ export default function SchemaParser() {
 
       <div className='flex flex-row my-1'>
         <SchemaInput 
-
-          setParsedSchema={setParsedSchema}
- />
-        <SchemaVisualizer 
-          parsedSchema={parsedSchema} />
+          setParsedSchema={setParsedSchema}/>
+        {/* <SchemaVisualizer  */}
+        <SchemaDisplayReactFlow 
+          parsedSchema={parsedSchema}
+        />
       </div>
 
     </div>
