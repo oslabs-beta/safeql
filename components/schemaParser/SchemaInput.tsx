@@ -15,26 +15,41 @@ import { EditorState, Extension } from '@codemirror/state';
 export const SchemaInput = (props: { setParsedSchema: any }) => {
   const { setInitialNodes, initialNodes } = useContext(Context)
   const editor = useRef(null);
-  const [schema, setSchema] = useState('');
-  //   `type Cohort {
-  //     id: ID
-  //     studentCount: Number
-  //     region: String
-  //   },
-  //   type Student {
-  //     id: ID
-  //     teacher: Type
-  //     region: String
-  //   },
-  //   `
-  // );
+  const [schema, setSchema] = useState(
+  `type Cohort {
+    id: ID
+    Count: Number
+    region: String
+  },
+  type Student {
+    id: ID
+    teacher: Type
+    region: String
+  },
+  type Class {
+    id: ID
+    teacher: Type
+    timezone: Integer
+    country: String
+  },
+  type Teacher {
+    id: ID
+    teacher: Type
+    region: String
+  },
+  type Admin{
+    id: ID
+    person: Type
+    region: String
+  }
+  `
+  );
 
   const updateSchema = EditorView.updateListener.of((v) => {
     setSchema(v.state.doc.toString());
   });
 
   const fetchSchema = async (input: string) => {
-    // console.log('input: ', input)
     try {
       const result = await fetch('/api/schemaEndpoint', {
         method: 'POST',
@@ -54,13 +69,11 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
 
   const submitSchema = async () => {
     const parsedResult = await fetchSchema(schema);
-    // console.log('Array of circular results', circularCheck(parsedResult))
-    // console.log('parsed result', parsedResult)
-    // console.log('node result',constructRFNodes(parsedResult))
-    setInitialNodes(constructRFNodes(parsedResult))
-    console.log('updatedNodes', initialNodes)
+    // This is where the circular logic is called, what to do with the data is another question
+      // console.log('Array of circular results', circularCheck(parsedResult))
+    const updatedNodes = constructRFNodes(parsedResult)
+    setInitialNodes(updatedNodes)
     props.setParsedSchema(parsedResult);
-    //convert to initialNodes format and setInitialNodes
   };
 
   useEffect(() => {

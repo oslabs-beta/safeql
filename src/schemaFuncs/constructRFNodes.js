@@ -57,7 +57,7 @@ export const constructRFNodes = (parsedSchemas) => {
   
       
       nodes.push(obj)
-      console.log('nodes', index, nodes)
+      // console.log('nodes', index, nodes)
 
   });
   // console.log('nodes', nodes)

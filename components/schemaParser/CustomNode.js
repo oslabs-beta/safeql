@@ -6,12 +6,12 @@ function DataField(props){
 
   return(
     <>
-      <table className='border-solid border-white bg-blue-300 mt-2 ml-1 rounded-t-lg-1 w-1/3 box-border min-w-fit'>
+      <tbody className='border-solid border-white bg-blue-300 mt-2 ml-1 rounded-t-lg-1 w-1/3 box-border min-w-fit'>
         <tr>
-          <td>{props.fieldName}</td>
-          <td>{props.fieldType}</td>
+          <td className="pl-3 pr-4">{props.fieldName}</td>
+          <td className="pl-3 pr-4">{props.fieldType}</td>
         </tr>
-      </table>
+      </tbody>
     </>
   );
 };
@@ -21,8 +21,14 @@ function DataField(props){
     const dataArray = Object.entries(props.data);
 
     return (
-       <>
-        <div>{props.data.tableName}</div>
+      <table className='rounded-md bg-blue-100 border-separate border-spacing-.5 w-48'>
+        <tbody className='text-center'>
+          <tr>
+            <th className="pt-1">
+              {props.data.tableName}  
+            </th>
+          </tr>
+        </tbody>
 
         {dataArray.map((pair) => {
           if (pair[0] !== 'tableName'){
@@ -34,7 +40,8 @@ function DataField(props){
           )
           }
         })}
-       </>
+      </table>
+      
     )
   }
 

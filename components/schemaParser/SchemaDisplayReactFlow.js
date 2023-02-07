@@ -1,4 +1,4 @@
-import {useState, useCallback, useContext} from 'react';
+import {useState, useCallback, useContext, useEffect} from 'react';
 import ReactFlow, {Background, Controls, applyEdgeChanges, applyNodeChanges} from 'reactflow';
 import 'reactflow/dist/style.css'
 import CustomNode from "./CustomNode";
@@ -22,6 +22,11 @@ function SchemaDisplayReactFlow(props) {
   const onEdgesChange = useCallback(
     (changes)=> setEdges((eds)=> applyEdgeChanges(changes, eds)), []
   );
+
+  useEffect(()=>{
+    setNodes(initialNodes)
+  },[initialNodes])
+
   
   return (
     <div className="w-full">
