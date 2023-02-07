@@ -26,14 +26,14 @@ export const nodes = [
   
 ];
 
-export const edges = [
-  {
-    id: '1-2',
-    source: '1', //where edge begins
-    target: '2', //where edge ends
-    type: 'step'//default is curved line
-  }
-]
+// export const edges = [
+//   {
+//     id: '1-2',
+//     source: '1', //where edge begins
+//     target: '2', //where edge ends
+//     type: 'step'//default is curved line
+//   }
+// ]
 
 // //update to reformat SchemaJSON to look like custom nodes
 
