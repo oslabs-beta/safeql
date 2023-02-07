@@ -58,7 +58,7 @@ export const EditorBox = () => {
   }, []);
 
   return (
-    <section className='bg-blue-300 mt-2 rounded-t-lg-1 w-1/3 box-border min-w-fit mr-1'>
+    <section className='bg-blue-300 mt-2 rounded-lg-1 w-1/3 box-border min-w-fit mr-1'>
       <div className='flex justify-between px-1 font-bold h-15 px-2 py-2 content-center'>
         <h2 className='flex text-xl p-2'>Sandbox</h2>
         <button
