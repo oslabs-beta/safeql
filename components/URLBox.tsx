@@ -16,7 +16,7 @@ export const URLBox = () => {
       <input
         onChange={handleUrlChange}
         className='bg-blue-100 rounded-lg-1 w-95p text-xl p-1 pl-3 pr-3 font-light focus:border-none focus:outline focus:outline-2 focus:outline-blue-300'
-      ></input>
+      value = 'https://rickandmortyapi.com/graphql'></input>
     </div>
   );
 };

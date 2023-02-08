@@ -16,7 +16,25 @@ export const EditorBox = () => {
   const editor = useRef();
   const { url, response, setResponse, analysisData, setAnalysisData } =
     useContext(Context);
-  const [query, setQuery] = useState('');
+    
+  const [query, setQuery] = useState(
+    `query {
+      characters(page: 2, filter: { name: "rick" }) {
+        info {
+          count
+        }
+        results {
+          name
+        }
+      }
+      location(id: 1) {
+        id
+      }
+      episodesByIds(ids: [1, 2]) {
+        id
+      }
+    }`
+    );
 
   const updateQuery = EditorView.updateListener.of((v) => {
     setQuery(v.state.doc.toString());

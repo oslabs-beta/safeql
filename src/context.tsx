@@ -49,7 +49,7 @@ Context.displayName = 'Query Context';
 //add context functionality
 const ContextFunctionality = ({ children }: Props) => {
   //create state variables
-  const [url, setUrl] = useState<string>('');
+  const [url, setUrl] = useState<string>('https://rickandmortyapi.com/graphql');
   const [response, setResponse] = useState<string>('');
   const [introspectionOn, setIntrospectionOn] = useState<boolean>(true);
   const [analysisData, setAnalysisData] = useState<AnalysisType>({
@@ -58,30 +58,30 @@ const ContextFunctionality = ({ children }: Props) => {
   const [isSecurity, setIsSecurity] = useState<boolean>(false);
 
   //will need to add TS typing here
-  const defaultNodes = [
-    {
-      id: '0',
-      type: 'custom',
-      data: {
-        tableName: 'Cohort',
-        id: 'ID',
-        studentCount: 'Number',
-        region: 'String'
-      },
-      position: {x:25, y: 25} 
-    },
-    {
-      id: '2',
-      type: 'custom',
-      data: {
-        tableName: 'Student',
-        id: 'ID',
-        teacher: 'Type',
-        region: 'String'
-      },
-      position: {x:25, y: 225} 
-    }
-  ];
+  // const defaultNodes = [
+  //   {
+  //     id: '0',
+  //     type: 'custom',
+  //     data: {
+  //       tableName: 'Cohort',
+  //       id: 'ID',
+  //       studentCount: 'Number',
+  //       region: 'String'
+  //     },
+  //     position: {x:25, y: 25} 
+  //   },
+  //   {
+  //     id: '2',
+  //     type: 'custom',
+  //     data: {
+  //       tableName: 'Student',
+  //       id: 'ID',
+  //       teacher: 'Type',
+  //       region: 'String'
+  //     },
+  //     position: {x:25, y: 225} 
+  //   }
+  // ];
   const [initialNodes, setInitialNodes] = useState([])
 
  
