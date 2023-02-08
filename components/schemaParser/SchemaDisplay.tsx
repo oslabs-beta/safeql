@@ -1,3 +1,5 @@
+// this too is old and will be deleted
+
 import { SchemaDisplayProps } from '../../src/types'
 
 function SchemaDisplay(props: SchemaDisplayProps) {

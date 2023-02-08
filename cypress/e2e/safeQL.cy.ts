@@ -1,4 +1,4 @@
-xdescribe('visit query homepage', () => {
+describe('visit query homepage', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/');
   });
