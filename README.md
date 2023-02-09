@@ -23,11 +23,10 @@ Currently in Beta.
 
 # **Installation**
 
-To get started, fork and clone this repo, which is available on MacOS, Window, and Linux.
-
-1. Fork this repo.
-2. Clone to local machine
-3. Run `npm i`
+1. Fork this repo and clone to local machine.
+2. Run `npm i` to install dependencies.
+3. Run `npm start dev`.
+4. Visit `localhost:3000`.
 
 
 No account is required to make use of the application, so you can jump right in. Since no data is saved past session ending, your data is closed off from external influences ensuring complete security and separation of concerns.
