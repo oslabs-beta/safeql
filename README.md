@@ -19,7 +19,7 @@ SafeQL is an easy-to-use web-based GUI for GraphQL API security and performance 
 
 Users can keep track of all analytics run while exploring the API by sending it different kinds of data to see what values are returned.
 
-Currently in Beta.
+Currently in Alpha.
 
 # **Installation**
 
