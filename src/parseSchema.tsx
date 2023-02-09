@@ -10,25 +10,23 @@ type Cohort {
 
 type ObjectAST = {
   name: { value: string },
+  node: { value: number },
   fields: []
 }
 
 export const parseSchema = (schema: string) => {
   const allSchema: [] = []
-  parse(schema).definitions.forEach((ast: ObjectAST) => {
-    const objectAST: {name?: string, fields?: []} = {};
-    objectAST.name = ast.name.value
+  parse(schema).definitions.forEach((ast: ObjectAST, index:number) => {
+    const objectAST: {name?: string, node?:number, fields?: []} = {};
+    objectAST.name = ast.name.value;
+    objectAST.node = index;
     objectAST.fields = [];
-    // console.log('\n');
-    // console.log(ast.name);
 
     visit(ast, {
       FieldDefinition(node) {
         const nodeObject = {name: null, type: null}
         let node2 = print(node)
-        // console.log(i++, node2)
         const elements = node2.split(': ')
-        // console.log(elements)
         nodeObject.name = elements[0]
         nodeObject.type = elements[1]
         objectAST.fields.push(nodeObject)

@@ -12,7 +12,7 @@ function Security() {
         <h3>Suggestions</h3>
         <ul>
           <li>
-            {introspectionOn ? null : 'Turn on introspection to secure schema'}
+            {!introspectionOn ? null : 'Turn on introspection to secure schema'}
           </li>
         </ul>
       </div>

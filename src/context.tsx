@@ -6,6 +6,7 @@ import {
   ReactNode,
   FC,
 } from 'react';
+import { MarkerType } from 'reactflow';
 
 //create type for Context
 type ContextType = {
@@ -21,6 +22,8 @@ type ContextType = {
   setIsSecurity: Dispatch<SetStateAction<boolean>>;
   initialNodes: Array<NodeType>;
   setInitialNodes: Dispatch<SetStateAction<Array<NodeType>>>
+  initialEdges: Array<EdgeType>;
+  setInitialEdges: Dispatch<SetStateAction<Array<EdgeType>>>
 };
 
 type AnalysisType = {
@@ -31,8 +34,14 @@ type NodeType = {
   type: String,
   id: String,
   position: {x:Number, y: Number},
-  // [data: string] : any
   data: {[key: string]: string} 
+}
+
+type EdgeType = {
+  id: String,
+  source: String,
+  target: String,
+  
 }
 
 type Props = {
@@ -58,32 +67,8 @@ const ContextFunctionality = ({ children }: Props) => {
   const [isSecurity, setIsSecurity] = useState<boolean>(false);
 
   //will need to add TS typing here
-  const defaultNodes = [
-    {
-      id: '0',
-      type: 'custom',
-      data: {
-        tableName: 'Cohort',
-        id: 'ID',
-        studentCount: 'Number',
-        region: 'String'
-      },
-      position: {x:25, y: 25} 
-    },
-    {
-      id: '2',
-      type: 'custom',
-      data: {
-        tableName: 'Student',
-        id: 'ID',
-        teacher: 'Type',
-        region: 'String'
-      },
-      position: {x:25, y: 225} 
-    }
-  ];
-  const [initialNodes, setInitialNodes] = useState([])
-
+  const [initialNodes, setInitialNodes] = useState([]);
+  const [initialEdges, setInitialEdges] = useState([])
  
 
   //Initialize the state
@@ -99,7 +84,9 @@ const ContextFunctionality = ({ children }: Props) => {
     isSecurity,
     setIsSecurity,
     initialNodes,
-    setInitialNodes
+    setInitialNodes,
+    initialEdges,
+    setInitialEdges
   };
 
   return (

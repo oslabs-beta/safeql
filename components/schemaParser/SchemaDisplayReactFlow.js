@@ -10,10 +10,10 @@ const nodeTypes = {
 };
 
 function SchemaDisplayReactFlow(props) {
-  const { initialNodes } = useContext(Context)
+  const { initialNodes, initialEdges } = useContext(Context)
 
   const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState([]);
+  const [edges, setEdges] = useState(initialEdges);
 
   const onNodesChange = useCallback(
     (changes)=> setNodes((nds)=>applyNodeChanges(changes, nds)), []
@@ -26,6 +26,10 @@ function SchemaDisplayReactFlow(props) {
   useEffect(()=>{
     setNodes(initialNodes)
   },[initialNodes])
+
+  useEffect(()=>{
+    setEdges(initialEdges)
+  },[initialEdges])
 
   
   return (

@@ -8,7 +8,8 @@ function Header() {
         src='/safeQL_name2.png'
         alt='SafeQL Logo'
         width={300}
-        height={14}
+        height={83}
+        priority
       />
       <NavBar />
     </div>
