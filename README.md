@@ -15,6 +15,7 @@
 </p>
 
 # **Description**
+
 SafeQL is an easy-to-use web-based GUI for GraphQL API security and performance testing. It allows users to test the performance of their GraphQL API by displaying a query's response time (upcoming metrics to include status code, overhead, throughput, and load capacity.) It also tests if their GraphQL API is protected against DDOS attacks.
 
 Users can keep track of all analytics run while exploring the API by sending it different kinds of data to see what values are returned.
@@ -28,32 +29,37 @@ Currently in Alpha.
 3. Run `npm start dev`.
 4. Visit `localhost:3000`.
 
-
 No account is required to make use of the application, so you can jump right in. Since no data is saved past session ending, your data is closed off from external influences ensuring complete security and separation of concerns.
 
 Now, let's test your endpoint!
 
 ## **Viewing Analytics Information**
+
 After opening the application you'll see three sections - an area to input the URL of the GraphQL API along with a code editor, another code editor, and the analytics sections.<br><br>
 
 ### **Testing Response Time (upcoming features: Query Overhead, Status, Throughput, and Load)** <br>
+
 Enter the URL of the GraphQL API and type in the query you want to test. Click Run to automatically run all associated tests<br><br>
 
 ### **Testing the security of your GraphQL API** <br>
+
 Enter the URL of the GraphQL API. You don't need to enter a query string. If a query is entered, it won't affect the results. Choose from the drop down menu and select, _Security_, click on the _Submit_ button to determine if the query passes or fails the DOS test.
+
 <p align="center">
   <img width="600" src=https://user-images.githubusercontent.com/3701668/217415542-6e217696-0c54-448a-ba13-ea0a146512ce.gif> <br><br>
 </p>
 
-
 ### **Testing the security of your schema** <br>
-Once you click onto to the Schema page, there is an codebox for copying your schema in securely, since your schema are only saved for the session. Submit your schema for an interactive table visualization that displays any schema that allow for a circular reference that could be exploited. 
+
+Once you click onto to the Schema page, there is an codebox for copying your schema in securely, since your schema are only saved for the session. Submit your schema for an interactive table visualization that displays any schema that allow for a circular reference that could be exploited.
+
 <p align="center">
   <img width="600" src=https://user-images.githubusercontent.com/3701668/217420191-22bd41b8-f78c-4f12-a730-ebd7df93ad62.gif> <br>
 </p>
 <br><br>
 
 # **Tech Stack**
+
 <table align="center" >
   <tbody>
   <tr>
@@ -84,7 +90,9 @@ Once you click onto to the Schema page, there is an codebox for copying your sch
   </tr>
  
 </tbody></table>
+
 # Read More
+
 Please visit our [website](https://www.safeQL.com/) <br>
 [Read](https://www.medium.com/) about us!! <br>
 <br>
