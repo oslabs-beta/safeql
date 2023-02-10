@@ -24,6 +24,8 @@ type ContextType = {
   setInitialNodes: Dispatch<SetStateAction<Array<NodeType>>>
   initialEdges: Array<EdgeType>;
   setInitialEdges: Dispatch<SetStateAction<Array<EdgeType>>>
+  queryAttack: String;
+  setQueryAttack: Dispatch<SetStateAction<string>>;
 };
 
 type AnalysisType = {
@@ -69,6 +71,7 @@ const ContextFunctionality = ({ children }: Props) => {
   //will need to add TS typing here
   const [initialNodes, setInitialNodes] = useState([]);
   const [initialEdges, setInitialEdges] = useState([])
+  const [queryAttack, setQueryAttack] = useState('')
  
 
   //Initialize the state
@@ -86,7 +89,9 @@ const ContextFunctionality = ({ children }: Props) => {
     initialNodes,
     setInitialNodes,
     initialEdges,
-    setInitialEdges
+    setInitialEdges, 
+    queryAttack,
+    setQueryAttack
   };
 
   return (

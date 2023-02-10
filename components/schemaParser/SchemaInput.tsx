@@ -11,10 +11,14 @@ import { constructRFNodes } from '../../src/schemaFuncs/constructRFNodes';
 import { constructRFEdges } from '../../src/schemaFuncs/constructRFEdges';
 // @Types for code-mirror
 import { EditorState, Extension } from '@codemirror/state';
+import QueryAttack from './QueryAttack'
+import { Query } from 'pg';
 
 export const SchemaInput = (props: { setParsedSchema: any }) => {
-  const { setInitialNodes, initialNodes, setInitialEdges } = useContext(Context)
+  const { setInitialNodes, initialNodes, setInitialEdges, setQueryAttack, queryAttack } = useContext(Context)
   const editor = useRef(null);
+  let circularRefsAndAttack;
+ 
   const [schema, setSchema] = useState(
   `type Cohort {
     id: ID
@@ -74,11 +78,13 @@ type Admin{
   /* submiting schema starts a cascade of events: parsing the schema, determining circular references and updating Nodes and Edges in context*/
   const submitSchema = async () => {
     const parsedResult = await fetchSchema(schema);
-    const circularRefs = circularCheck(parsedResult)
+    circularRefsAndAttack = circularCheck(parsedResult)
     props.setParsedSchema(parsedResult);
     const updatedNodes = constructRFNodes(parsedResult)
-    if (circularRefs) {
-      const createdEdges = constructRFEdges(circularRefs)
+    if (circularRefsAndAttack) {
+      const createdEdges = constructRFEdges(circularRefsAndAttack[0])
+      const constructedQuery = circularRefsAndAttack[1]
+      setQueryAttack(constructedQuery)
       setInitialEdges(createdEdges)
     }
     setInitialNodes(updatedNodes)
@@ -126,6 +132,9 @@ type Admin{
         ref={editor}
         className='editor'
       ></div>
+      <QueryAttack 
+        queryText={queryAttack}
+      />
     </section>
   );
 };

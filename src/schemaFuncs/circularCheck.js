@@ -1,5 +1,6 @@
 import { cursorDocEnd } from "@codemirror/commands";
 import { check } from "prettier";
+import { circularAttack } from "./generateCircularAttack";
 
 /*
   want to check if there is a reference to another schema 
@@ -61,7 +62,11 @@ export const circularCheck = (parsedData) => {
     }
   }
   
-  if (allCircular.length > 0) return removeDuplicates(allCircular);
+  if (allCircular.length > 0) {
+    const noDuplicates = removeDuplicates(allCircular);
+    const attackQuery = circularAttack(noDuplicates, parsedData, schemaTypes, 5)
+    return [noDuplicates, attackQuery]
+  }
   return false;
 }
 
