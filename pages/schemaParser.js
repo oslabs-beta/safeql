@@ -31,7 +31,7 @@ export default function SchemaParser() {
           parsedSchema={parsedSchema}
         />
       </div>
-      <QueryAttack />
+      {/* <QueryAttack /> */}
     </div>
   );
 }
