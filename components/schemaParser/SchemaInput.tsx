@@ -6,42 +6,51 @@ import { syntaxHighlighting } from "@codemirror/language";
 import { graphql } from 'cm6-graphql';
 import { Context } from '../../src/context';
 import { fixedHeightEditor, customHighlightStyle } from '../../src/cm6Theme';
-import { parseSchema } from "../../src/parseSchema";
 import { circularCheck } from '../../src/schemaFuncs/circularCheck';
 import { constructRFNodes } from '../../src/schemaFuncs/constructRFNodes';
+import { constructRFEdges } from '../../src/schemaFuncs/constructRFEdges';
 // @Types for code-mirror
 import { EditorState, Extension } from '@codemirror/state';
+import QueryAttack from './QueryAttack'
+import { Query } from 'pg';
 
 export const SchemaInput = (props: { setParsedSchema: any }) => {
-  const { setInitialNodes, initialNodes } = useContext(Context)
+  const { setInitialNodes, initialNodes, setInitialEdges, setQueryAttack, queryAttack } = useContext(Context)
   const editor = useRef(null);
+  let circularRefsAndAttack;
+ 
   const [schema, setSchema] = useState(
   `type Cohort {
     id: ID
     Count: Number
     region: String
+    student: Student
   },
-  type Student {
-    id: ID
-    teacher: Type
-    region: String
-  },
-  type Class {
-    id: ID
-    teacher: Type
-    timezone: Integer
-    country: String
-  },
-  type Teacher {
-    id: ID
-    teacher: Type
-    region: String
-  },
-  type Admin{
-    id: ID
-    person: Type
-    region: String
-  }
+type Student {
+  id: ID
+  teacher: String
+  region: String
+  class: Class
+},
+type Class {
+  id: ID
+  teacher: String
+  timezone: Integer
+  country: String
+  cohort: Cohort
+},
+type Teacher {
+  id: ID
+  teacher: String
+  region: String
+  admin: Admin
+},
+type Admin{
+  id: ID
+  person: String
+  region: String
+  teacher: Teacher
+}
   `
   );
 
@@ -59,21 +68,26 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
         body: JSON.stringify(input)
       });
       const toVisualize = await result.json();
-      // console.log('visualize: ', toVisualize)
       return toVisualize;
 
     } catch (error) {
       return 'Error in schemaEndpoint function';
     }
   };
-
+  
+  /* submiting schema starts a cascade of events: parsing the schema, determining circular references and updating Nodes and Edges in context*/
   const submitSchema = async () => {
     const parsedResult = await fetchSchema(schema);
-    // This is where the circular logic is called, what to do with the data is another question
-      // console.log('Array of circular results', circularCheck(parsedResult))
-    const updatedNodes = constructRFNodes(parsedResult)
-    setInitialNodes(updatedNodes)
+    circularRefsAndAttack = circularCheck(parsedResult)
     props.setParsedSchema(parsedResult);
+    const updatedNodes = constructRFNodes(parsedResult)
+    if (circularRefsAndAttack) {
+      const createdEdges = constructRFEdges(circularRefsAndAttack[0])
+      const constructedQuery = circularRefsAndAttack[1]
+      setQueryAttack(constructedQuery)
+      setInitialEdges(createdEdges)
+    }
+    setInitialNodes(updatedNodes)
   };
 
   useEffect(() => {
@@ -118,6 +132,9 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
         ref={editor}
         className='editor'
       ></div>
+      <QueryAttack 
+        queryText={queryAttack}
+      />
     </section>
   );
 };

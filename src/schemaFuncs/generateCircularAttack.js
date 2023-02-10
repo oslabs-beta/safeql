@@ -7,11 +7,14 @@
   */
 
 export const circularAttack = (circularSchema, parsedSchema, schemaTypes, complexity) => {
+  let workingSchema = circularSchema[0]
+  let finalOption;
   let constructingQuery = ''
 
-  for (let i = 0; i < circularSchema.length; i++){
-    constructingQuery += ` ${circularSchema[i]} {`
-  }
+  workingSchema.forEach((key, value) => {
+    finalOption = value;
+    constructingQuery += ` ${value} {`
+  });
 
   //creating an array of subfields for the final element in the circular attack; this cannot be in the Schema Types
   let finalSubFieldOptions = [];
@@ -22,8 +25,8 @@ export const circularAttack = (circularSchema, parsedSchema, schemaTypes, comple
   
   parsedSchema.forEach(object => {
     
-    for (let value of Object.values(object)){
-      if (value === circularSchema[circularSchema.length - 1]){
+    for (let [key,value] of Object.entries(object)){
+      if (value === finalOption){
         const fields = object.fields
         fields.forEach(element => {
           if (!schemaTypesLowerCase.includes(element.name))
@@ -49,4 +52,4 @@ const testData = [
   {name: 'Third',   fields:[    {name: 'id', type: 'ID'},    {name: 'user', type:'User'}, ,    {name: 'cabbages', type:'cabbage'}  ]  }  
 ]
 
-console.log(circularAttack(['User', 'Location', 'Third'], testData, ['NotConnected', 'User', 'Location', 'Third'], 5))
+// console.log(circularAttack(['User', 'Location', 'Third'], testData, ['NotConnected', 'User', 'Location', 'Third'], 5))

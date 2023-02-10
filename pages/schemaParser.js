@@ -2,13 +2,12 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { SchemaInput } from '../components/schemaParser/SchemaInput';
 import SchemaVisualizer from '../components/schemaParser/SchemaVisualizer';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import SchemaDisplayReactFlow from '../components/schemaParser/SchemaDisplayReactFlow';
-
+import QueryAttack from '../components/schemaParser/QueryAttack';
 
 
 export default function SchemaParser() {
-
   const [parsedSchema, setParsedSchema] = useState('');
  
   
@@ -32,7 +31,7 @@ export default function SchemaParser() {
           parsedSchema={parsedSchema}
         />
       </div>
-
+      {/* <QueryAttack /> */}
     </div>
   );
 }

@@ -93,8 +93,8 @@ Once you click onto to the Schema page, there is an codebox for copying your sch
 
 # Read More
 
-Please visit our [website](https://www.safeQL.com/) <br>
-[Read](https://www.medium.com/) about us!! <br>
+Please visit our [website](https://www.safeQL.io/) <br>
+[Read](https://medium.com/@egkopin/introducing-safeql-7fe98fb3598d) about us!! <br>
 <br>
 
 ## **Co-Creators** <br>

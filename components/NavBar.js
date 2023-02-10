@@ -19,12 +19,9 @@ function NavBar() {
       <nav className='flex flex-row justify-center content-center'>
         {navigationRoutes.map((link, index) => {
           return (
-            <ul className='p-2 mx-2 bg-blue-300 rounded-md hover:bg-blue-200 cursor-pointer'>
+            <ul className='p-2 mx-2 bg-blue-300 rounded-md hover:bg-blue-200 cursor-pointer' key={index}>
               <Link href={link.path}>
-                <li
-                  className='font-bold'
-                  key={index}
-                >
+                <li className='font-bold'>
                   {link.name}
                 </li>
               </Link>

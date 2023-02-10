@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
+import {Handle} from 'reactflow';
 
-// CustomTableNode will return a unique node for each SchemaDisplayReactFlow Custom Nodes
+// CustomTableNode returns a unique node for each SchemaDisplayReactFlow Custom Node
 
 function DataField(props){
 
@@ -29,13 +30,19 @@ function DataField(props){
             </th>
           </tr>
         </tbody>
-
-        {dataArray.map((pair) => {
+        <Handle type="target"
+          position="left"
+        />
+        <Handle type="source"
+          position="bottom"
+        />
+        {dataArray.map((pair, index) => {
           if (pair[0] !== 'tableName'){
           return(
             < DataField
               fieldName = {pair[0]}
               fieldType= {pair[1]}
+              key={`${props.data.tableName}${index}`}
             />
           )
           }
