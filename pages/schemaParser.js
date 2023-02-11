@@ -19,13 +19,10 @@ export default function SchemaParser() {
       </Head>
 
       <div className='flex flex-row my-1'>
-        <SchemaInput 
-          setParsedSchema={setParsedSchema}/>
-        <SchemaDisplayReactFlow 
-          parsedSchema={parsedSchema}
-        />
+        <SchemaInput setParsedSchema={setParsedSchema} />
+        <SchemaDisplayReactFlow parsedSchema={parsedSchema} />
       </div>
-       {/* <QueryAttack /> to be moved here */}
+      {/* <QueryAttack /> to be moved here */}
     </div>
   );
 }

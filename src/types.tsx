@@ -1,13 +1,13 @@
 export type SchemaDisplayProps = {
-  name: string,
+  name: string;
   fields: [
     val: {
-      name: string,
-      type: string
+      name: string;
+      type: string;
     }
-  ]
-}
+  ];
+};
 
 export type SchemaVisualizerProps = {
   parsedSchema: [SchemaDisplayProps];
-}
+};

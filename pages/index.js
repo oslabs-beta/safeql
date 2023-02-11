@@ -23,7 +23,6 @@ export default function Home() {
         <ResponseBox />
         <ResultsBox />
       </div>
-
     </div>
   );
 }

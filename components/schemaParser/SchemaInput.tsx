@@ -2,7 +2,7 @@ import { useRef, useEffect, useContext, useState } from 'react';
 import { EditorView, basicSetup } from 'codemirror';
 import { keymap } from '@codemirror/view';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
-import { syntaxHighlighting } from "@codemirror/language";
+import { syntaxHighlighting } from '@codemirror/language';
 import { graphql } from 'cm6-graphql';
 import { Context } from '../../src/context';
 import { fixedHeightEditor, customHighlightStyle } from '../../src/cm6Theme';
@@ -11,14 +11,20 @@ import { constructRFNodes } from '../../src/schemaFuncs/constructRFNodes';
 import { constructRFEdges } from '../../src/schemaFuncs/constructRFEdges';
 // @Types for code-mirror
 import { EditorState, Extension } from '@codemirror/state';
-import QueryAttack from './QueryAttack'
+import QueryAttack from './QueryAttack';
 import { Query } from 'pg';
 
 export const SchemaInput = (props: { setParsedSchema: any }) => {
-  const { setInitialNodes, initialNodes, setInitialEdges, setQueryAttack, queryAttack } = useContext(Context)
+  const {
+    setInitialNodes,
+    initialNodes,
+    setInitialEdges,
+    setQueryAttack,
+    queryAttack,
+  } = useContext(Context);
   const editor = useRef(null);
   let circularRefsAndAttack;
- 
+
   const [schema, setSchema] = useState('');
 
   const updateSchema = EditorView.updateListener.of((v) => {
@@ -32,29 +38,28 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(input)
+        body: JSON.stringify(input),
       });
       const toVisualize = await result.json();
       return toVisualize;
-
     } catch (error) {
       return 'Error in schemaEndpoint function';
     }
   };
-  
+
   /* submiting schema starts a cascade of events: parsing the schema, determining circular references and updating Nodes and Edges in context*/
   const submitSchema = async () => {
     const parsedResult = await fetchSchema(schema);
-    circularRefsAndAttack = circularCheck(parsedResult)
+    circularRefsAndAttack = circularCheck(parsedResult);
     props.setParsedSchema(parsedResult);
-    const updatedNodes = constructRFNodes(parsedResult)
+    const updatedNodes = constructRFNodes(parsedResult);
     if (circularRefsAndAttack) {
-      const createdEdges = constructRFEdges(circularRefsAndAttack[0])
-      const constructedQuery = circularRefsAndAttack[1]
-      setQueryAttack(constructedQuery)
-      setInitialEdges(createdEdges)
+      const createdEdges = constructRFEdges(circularRefsAndAttack[0]);
+      const constructedQuery = circularRefsAndAttack[1];
+      setQueryAttack(constructedQuery);
+      setInitialEdges(createdEdges);
     }
-    setInitialNodes(updatedNodes)
+    setInitialNodes(updatedNodes);
   };
 
   useEffect(() => {
@@ -97,9 +102,7 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
         ref={editor}
         className='editor'
       ></div>
-      <QueryAttack 
-        queryText={queryAttack}
-      />
+      <QueryAttack queryText={queryAttack} />
     </section>
   );
 };

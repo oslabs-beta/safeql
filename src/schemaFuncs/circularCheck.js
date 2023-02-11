@@ -1,6 +1,6 @@
 // import { cursorDocEnd } from "@codemirror/commands";
 // import { check } from "prettier";
-import { circularAttack } from "./generateCircularAttack";
+import { circularAttack } from './generateCircularAttack';
 
 /*
   want to check if there is a reference to another schema 
@@ -10,75 +10,115 @@ import { circularAttack } from "./generateCircularAttack";
 */
 
 const testData = [
-  { name: 'NotConnected', node: 0, fields: [{ name: 'id', type: 'ID' }, { name: 'user', type: 'User' }] },
-  { name: 'User', node: 1, fields: [{ name: 'id', type: 'ID' }, { name: 'location', type: 'Location' }, { name: 'cohort', type: 'String' }] },
-  { name: 'Location', node: 2, fields: [{ name: 'id', type: 'ID' }, { name: 'gps', type: 'Number' }, { name: 'user', type: 'Third' }] },
-  { name: 'Third', node: 3, fields: [{ name: 'id', type: 'ID' }, { name: 'user', type: 'User' }] }
-]
+  {
+    name: 'NotConnected',
+    node: 0,
+    fields: [
+      { name: 'id', type: 'ID' },
+      { name: 'user', type: 'User' },
+    ],
+  },
+  {
+    name: 'User',
+    node: 1,
+    fields: [
+      { name: 'id', type: 'ID' },
+      { name: 'location', type: 'Location' },
+      { name: 'cohort', type: 'String' },
+    ],
+  },
+  {
+    name: 'Location',
+    node: 2,
+    fields: [
+      { name: 'id', type: 'ID' },
+      { name: 'gps', type: 'Number' },
+      { name: 'user', type: 'Third' },
+    ],
+  },
+  {
+    name: 'Third',
+    node: 3,
+    fields: [
+      { name: 'id', type: 'ID' },
+      { name: 'user', type: 'User' },
+    ],
+  },
+];
 
 export const circularCheck = (parsedData) => {
-  const schemaTypes = []; 
-  parsedData.forEach(object => {
-    schemaTypes.push(object.name)
-  })
-  
+  const schemaTypes = [];
+  parsedData.forEach((object) => {
+    schemaTypes.push(object.name);
+  });
+
   const createGraph = {};
 
   let propName;
 
   parsedData.forEach((object) => {
-    for (let [key,value] of Object.entries(object)){
-      if (key === 'name'){
+    for (let [key, value] of Object.entries(object)) {
+      if (key === 'name') {
         propName = value;
         createGraph[value] = [];
       }
-      if (key === 'fields'){
-        value.forEach(element => {
-          if (element.type.toLowerCase() !== 'id' && schemaTypes.includes(element.type)){
-          createGraph[propName].push(element.type)
+      if (key === 'fields') {
+        value.forEach((element) => {
+          if (
+            element.type.toLowerCase() !== 'id' &&
+            schemaTypes.includes(element.type)
+          ) {
+            createGraph[propName].push(element.type);
           }
-        })
+        });
       }
-    }  
+    }
   });
-  
+
   let allCircular = [];
-   for (let i = 0; i < schemaTypes.length; i++){
+  for (let i = 0; i < schemaTypes.length; i++) {
     const checkedSchemaTypes = new Map();
-    let queue = [...createGraph[schemaTypes[i]]]; 
-    let start = schemaTypes[i]
+    let queue = [...createGraph[schemaTypes[i]]];
+    let start = schemaTypes[i];
 
-    while (queue.length){
+    while (queue.length) {
       const current = queue.shift();
-      if (checkedSchemaTypes.has(current)) {continue}
+      if (checkedSchemaTypes.has(current)) {
+        continue;
+      } else {
+        checkedSchemaTypes.set(current, schemaTypes.indexOf(current));
+      }
 
-      else {checkedSchemaTypes.set(current, schemaTypes.indexOf(current))}
+      if (current === start) {
+        allCircular.push(checkedSchemaTypes);
+      }
 
-      if (current === start){
-        allCircular.push(checkedSchemaTypes)
-      } 
-
-      queue.push(...createGraph[current])
+      queue.push(...createGraph[current]);
     }
   }
-  
+
   if (allCircular.length > 0) {
     const noDuplicates = removeDuplicates(allCircular);
-    const attackQuery = circularAttack(noDuplicates, parsedData, schemaTypes, 5)
-    return [noDuplicates, attackQuery]
+    const attackQuery = circularAttack(
+      noDuplicates,
+      parsedData,
+      schemaTypes,
+      5
+    );
+    return [noDuplicates, attackQuery];
   }
   return false;
-}
+};
 
-function removeDuplicates (arrOfMaps) {
-  const used = new Set()
+function removeDuplicates(arrOfMaps) {
+  const used = new Set();
   const noDuplicates = [];
-  const finalResult = arrOfMaps.forEach(circMap => {
-    const currentArr = Array.from(circMap).sort()
+  const finalResult = arrOfMaps.forEach((circMap) => {
+    const currentArr = Array.from(circMap).sort();
     if (!used.has(`${currentArr}`)) {
-      used.add(`${currentArr}`)
-      noDuplicates.push(circMap)
-      }
-  })
+      used.add(`${currentArr}`);
+      noDuplicates.push(circMap);
+    }
+  });
   return noDuplicates;
 }

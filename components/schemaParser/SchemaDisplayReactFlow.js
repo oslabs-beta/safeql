@@ -1,7 +1,12 @@
-import {useState, useCallback, useContext, useEffect} from 'react';
-import ReactFlow, {Background, Controls, applyEdgeChanges, applyNodeChanges} from 'reactflow';
-import 'reactflow/dist/style.css'
-import CustomNode from "./CustomNode";
+import { useState, useCallback, useContext, useEffect } from 'react';
+import ReactFlow, {
+  Background,
+  Controls,
+  applyEdgeChanges,
+  applyNodeChanges,
+} from 'reactflow';
+import 'reactflow/dist/style.css';
+import CustomNode from './CustomNode';
 import { Context } from '../../src/context';
 
 const nodeTypes = {
@@ -9,42 +14,42 @@ const nodeTypes = {
 };
 
 function SchemaDisplayReactFlow(props) {
-  const { initialNodes, initialEdges } = useContext(Context)
+  const { initialNodes, initialEdges } = useContext(Context);
 
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
 
   const onNodesChange = useCallback(
-    (changes)=> setNodes((nds)=>applyNodeChanges(changes, nds)), []
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    []
   );
 
   const onEdgesChange = useCallback(
-    (changes)=> setEdges((eds)=> applyEdgeChanges(changes, eds)), []
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    []
   );
 
-  useEffect(()=>{
-    setNodes(initialNodes)
-  },[initialNodes])
+  useEffect(() => {
+    setNodes(initialNodes);
+  }, [initialNodes]);
 
-  useEffect(()=>{
-    setEdges(initialEdges)
-  },[initialEdges])
+  useEffect(() => {
+    setEdges(initialEdges);
+  }, [initialEdges]);
 
-  
   return (
-    <div className="w-full">
-        <ReactFlow 
-          nodes={nodes}
-          onNodesChange={onNodesChange}
-          edges ={edges}
-          onEdgesChange={onEdgesChange}
-          minZoom={0.05}
-          nodeTypes={nodeTypes}
-        >
-          <Background />
-          <Controls />
-        </ReactFlow>
-        
+    <div className='w-full'>
+      <ReactFlow
+        nodes={nodes}
+        onNodesChange={onNodesChange}
+        edges={edges}
+        onEdgesChange={onEdgesChange}
+        minZoom={0.05}
+        nodeTypes={nodeTypes}
+      >
+        <Background />
+        <Controls />
+      </ReactFlow>
     </div>
   );
 }

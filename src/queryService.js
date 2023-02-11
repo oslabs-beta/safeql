@@ -1,4 +1,4 @@
-import { getGraphQLQueryStatsByOperation } from "graphql-operation-statistics";
+import { getGraphQLQueryStatsByOperation } from 'graphql-operation-statistics';
 
 //This will submit the typed query into the specified endpoint for basic functionality
 //In order to get the server message to the frontend I think we need to create this from the backend?
@@ -17,7 +17,7 @@ export const queryEndpoint = async (url, query) => {
       }),
     });
     const toPrint = await result.json();
-    const depth = await getDepth(query)
+    const depth = await getDepth(query);
     let end = window.performance.now();
     let querySpeed = end - start;
     return [toPrint, querySpeed];
@@ -58,6 +58,6 @@ export const checkIntrospection = async (url) => {
 
 const getDepth = (query) => {
   const stats = getGraphQLQueryStatsByOperation(query);
-  console.log('Depth', stats)
+  console.log('Depth', stats);
   return;
-}
+};
