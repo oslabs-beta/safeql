@@ -21,9 +21,9 @@ type ContextType = {
   isSecurity: boolean;
   setIsSecurity: Dispatch<SetStateAction<boolean>>;
   initialNodes: Array<NodeType>;
-  setInitialNodes: Dispatch<SetStateAction<Array<NodeType>>>
+  setInitialNodes: Dispatch<SetStateAction<Array<NodeType>>>;
   initialEdges: Array<EdgeType>;
-  setInitialEdges: Dispatch<SetStateAction<Array<EdgeType>>>
+  setInitialEdges: Dispatch<SetStateAction<Array<EdgeType>>>;
   queryAttack: String;
   setQueryAttack: Dispatch<SetStateAction<string>>;
 };
@@ -33,18 +33,17 @@ type AnalysisType = {
 };
 
 type NodeType = {
-  type: String,
-  id: String,
-  position: {x:Number, y: Number},
-  data: {[key: string]: string} 
-}
+  type: String;
+  id: String;
+  position: { x: Number; y: Number };
+  data: { [key: string]: string };
+};
 
 type EdgeType = {
-  id: String,
-  source: String,
-  target: String,
-  
-}
+  id: String;
+  source: String;
+  target: String;
+};
 
 type Props = {
   children: React.ReactNode;
@@ -70,9 +69,8 @@ const ContextFunctionality = ({ children }: Props) => {
 
   //will need to add TS typing here
   const [initialNodes, setInitialNodes] = useState([]);
-  const [initialEdges, setInitialEdges] = useState([])
-  const [queryAttack, setQueryAttack] = useState('')
- 
+  const [initialEdges, setInitialEdges] = useState([]);
+  const [queryAttack, setQueryAttack] = useState('');
 
   //Initialize the state
   const initialState = {
@@ -89,9 +87,9 @@ const ContextFunctionality = ({ children }: Props) => {
     initialNodes,
     setInitialNodes,
     initialEdges,
-    setInitialEdges, 
+    setInitialEdges,
     queryAttack,
-    setQueryAttack
+    setQueryAttack,
   };
 
   return (

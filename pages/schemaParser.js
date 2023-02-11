@@ -1,17 +1,12 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import { SchemaInput } from '../components/schemaParser/SchemaInput';
-import SchemaVisualizer from '../components/schemaParser/SchemaVisualizer';
 import { useState, useContext } from 'react';
 import SchemaDisplayReactFlow from '../components/schemaParser/SchemaDisplayReactFlow';
 import QueryAttack from '../components/schemaParser/QueryAttack';
 
-
 export default function SchemaParser() {
   const [parsedSchema, setParsedSchema] = useState('');
- 
-  
-  // const [url, setUrl] = useState<string>('');
 
   return (
     <div className={styles.container}>
@@ -24,14 +19,10 @@ export default function SchemaParser() {
       </Head>
 
       <div className='flex flex-row my-1'>
-        <SchemaInput 
-          setParsedSchema={setParsedSchema}/>
-        {/* <SchemaVisualizer  */}
-        <SchemaDisplayReactFlow 
-          parsedSchema={parsedSchema}
-        />
+        <SchemaInput setParsedSchema={setParsedSchema} />
+        <SchemaDisplayReactFlow parsedSchema={parsedSchema} />
       </div>
-      {/* <QueryAttack /> */}
+      {/* <QueryAttack /> to be moved here */}
     </div>
   );
 }

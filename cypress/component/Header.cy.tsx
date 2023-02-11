@@ -1,10 +1,8 @@
-import Header from '../../components/Header'
-// import '../../public/*';
+import Header from '../../components/Header';
 
 describe('<Header>', () => {
   it('mounts', () => {
-    cy.mount(<Header/>)
-    cy.get('[alt="SafeQL Logo"]')
-    .should('be.visible')
-  })
-})
+    cy.mount(<Header />);
+    cy.get('[alt="SafeQL Logo"]').should('be.visible');
+  });
+});

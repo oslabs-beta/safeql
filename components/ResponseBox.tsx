@@ -1,14 +1,13 @@
 import { useRef, useEffect, useContext, useState } from 'react';
 import { EditorState } from '@codemirror/state';
 import { EditorView } from 'codemirror';
-import { customSetup } from '../src/cmCustomSetup'
+import { customSetup } from '../src/cmCustomSetup';
 import { keymap } from '@codemirror/view';
-import { syntaxHighlighting } from "@codemirror/language"
+import { syntaxHighlighting } from '@codemirror/language';
 import { defaultKeymap, indentWithTab } from '@codemirror/commands';
 import { graphql } from 'cm6-graphql';
 import { Context } from '../src/context';
 import { fixedHeightResponse, customHighlightStyle } from '../src/cm6Theme';
-
 
 export const ResponseBox = (props: any) => {
   const responseBox = useRef(null);

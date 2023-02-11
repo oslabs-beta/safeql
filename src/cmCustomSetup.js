@@ -1,10 +1,32 @@
-import { lineNumbers, highlightActiveLineGutter, highlightSpecialChars, drawSelection, dropCursor, rectangularSelection, crosshairCursor, highlightActiveLine, keymap } from '@codemirror/view';
+import {
+  lineNumbers,
+  highlightActiveLineGutter,
+  highlightSpecialChars,
+  drawSelection,
+  dropCursor,
+  rectangularSelection,
+  crosshairCursor,
+  highlightActiveLine,
+  keymap,
+} from '@codemirror/view';
 export { EditorView } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
-import { foldGutter, indentOnInput, syntaxHighlighting, defaultHighlightStyle, bracketMatching, foldKeymap } from '@codemirror/language';
+import {
+  foldGutter,
+  indentOnInput,
+  syntaxHighlighting,
+  defaultHighlightStyle,
+  bracketMatching,
+  foldKeymap,
+} from '@codemirror/language';
 import { history, defaultKeymap, historyKeymap } from '@codemirror/commands';
 import { highlightSelectionMatches, searchKeymap } from '@codemirror/search';
-import { closeBrackets, autocompletion, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete';
+import {
+  closeBrackets,
+  autocompletion,
+  closeBracketsKeymap,
+  completionKeymap,
+} from '@codemirror/autocomplete';
 import { lintKeymap } from '@codemirror/lint';
 
 // (The superfluous function calls around the list of extensions work
@@ -38,34 +60,33 @@ Specifically, it includes...
  - [linting](https://codemirror.net/6/docs/ref/#lint.lintKeymap)
 
 */
-const customSetup = /*@__PURE__*/(() => [
-    // lineNumbers(),
-    // highlightActiveLineGutter(),
-    highlightSpecialChars(),
-    history(),
-    // foldGutter(),
-    drawSelection(),
-    dropCursor(),
-    EditorState.allowMultipleSelections.of(true),
-    indentOnInput(),
-    // syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
-    // bracketMatching(),
-    // closeBrackets(),
-    // autocompletion(),
-    // rectangularSelection(),
-    // crosshairCursor(),
-    // highlightActiveLine(),
-    // highlightSelectionMatches(),
-    keymap.of([
-        ...closeBracketsKeymap,
-        ...defaultKeymap,
-        ...searchKeymap,
-        ...historyKeymap,
-        ...foldKeymap,
-        ...completionKeymap,
-        ...lintKeymap
-    ])
+const customSetup = /*@__PURE__*/ (() => [
+  // lineNumbers(),
+  // highlightActiveLineGutter(),
+  highlightSpecialChars(),
+  history(),
+  // foldGutter(),
+  drawSelection(),
+  dropCursor(),
+  EditorState.allowMultipleSelections.of(true),
+  indentOnInput(),
+  // syntaxHighlighting(defaultHighlightStyle, { fallback: true }),
+  // bracketMatching(),
+  // closeBrackets(),
+  // autocompletion(),
+  // rectangularSelection(),
+  // crosshairCursor(),
+  // highlightActiveLine(),
+  // highlightSelectionMatches(),
+  keymap.of([
+    ...closeBracketsKeymap,
+    ...defaultKeymap,
+    ...searchKeymap,
+    ...historyKeymap,
+    ...foldKeymap,
+    ...completionKeymap,
+    ...lintKeymap,
+  ]),
 ])();
-
 
 export { customSetup };

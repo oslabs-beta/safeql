@@ -16,14 +16,15 @@ app
     const server = express();
     const port = process.env.EXPRESS_PORT || 3001;
 
-    server.get('/test1', (req, res) => { //the handle is for handling requests. This initially was at a catchall '*' endpoint but that didn't work. This might need to be at the root endpoint of our requests for best function. I don't know.
+    server.get('/test1', (req, res) => {
+      //the handle is for handling requests. This initially was at a catchall '*' endpoint but that didn't work. This might need to be at the root endpoint of our requests for best function. I don't know.
       return handle(req, res);
     });
 
     server.get('/test2', (req, res) => {
       return res.send('test');
     });
-    //routes and middleware go here!
+    //routes and middleware
 
     server
       .listen(port, () => {
