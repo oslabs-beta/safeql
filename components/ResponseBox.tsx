@@ -9,7 +9,6 @@ import { graphql } from 'cm6-graphql';
 import { Context } from '../src/context';
 import { fixedHeightResponse, customHighlightStyle } from '../src/cm6Theme';
 
-
 export const ResponseBox = (props: any) => {
   const responseBox = useRef(null);
   const { response } = useContext(Context);

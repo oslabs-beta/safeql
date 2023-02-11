@@ -14,6 +14,7 @@ type ObjectAST = {
   fields: []
 }
 
+
 export const parseSchema = (schema: string) => {
   const allSchema: [] = []
   parse(schema).definitions.forEach((ast: ObjectAST, index:number) => {

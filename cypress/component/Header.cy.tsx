@@ -1,5 +1,4 @@
 import Header from '../../components/Header'
-// import '../../public/*';
 
 describe('<Header>', () => {
   it('mounts', () => {

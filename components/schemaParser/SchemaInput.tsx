@@ -19,40 +19,7 @@ export const SchemaInput = (props: { setParsedSchema: any }) => {
   const editor = useRef(null);
   let circularRefsAndAttack;
  
-  const [schema, setSchema] = useState(
-  `type Cohort {
-    id: ID
-    Count: Number
-    region: String
-    student: Student
-  },
-type Student {
-  id: ID
-  teacher: String
-  region: String
-  class: Class
-},
-type Class {
-  id: ID
-  teacher: String
-  timezone: Integer
-  country: String
-  cohort: Cohort
-},
-type Teacher {
-  id: ID
-  teacher: String
-  region: String
-  admin: Admin
-},
-type Admin{
-  id: ID
-  person: String
-  region: String
-  teacher: Teacher
-}
-  `
-  );
+  const [schema, setSchema] = useState('');
 
   const updateSchema = EditorView.updateListener.of((v) => {
     setSchema(v.state.doc.toString());
@@ -103,8 +70,6 @@ type Admin{
         syntaxHighlighting(customHighlightStyle),
       ],
     });
-
-    // const parent = editor !== null ? editor.current : undefined
 
     const view = new EditorView({
       state: startState,

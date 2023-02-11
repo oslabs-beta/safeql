@@ -51,5 +51,3 @@ const testData = [
   {name: 'Location',   fields:[    {name: 'id', type: 'ID'},    {name: 'gps', type: 'Number'},    {name: 'user', type:'Third'}    ]  },
   {name: 'Third',   fields:[    {name: 'id', type: 'ID'},    {name: 'user', type:'User'}, ,    {name: 'cabbages', type:'cabbage'}  ]  }  
 ]
-
-// console.log(circularAttack(['User', 'Location', 'Third'], testData, ['NotConnected', 'User', 'Location', 'Third'], 5))

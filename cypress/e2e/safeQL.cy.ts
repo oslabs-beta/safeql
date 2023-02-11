@@ -5,13 +5,10 @@ describe('visit query homepage', () => {
 
   it('Checking navigation', () => {
     cy.contains('Schema')
-    cy.get(':nth-child(2) > a > .font-bold').click() // Click on first el containing 'Welcome'
+    cy.get(':nth-child(2) > a > .font-bold').click() 
     cy.contains('Sandbox').should('not.exist')
-    //check url
     cy.location('pathname').should('eq', '/schemaParser')
-    //click on homepage
     cy.get(':nth-child(1) > a > .font-bold').click()
-    //check for homepage
     cy.location('pathname').should('eq', '/')
   })
 

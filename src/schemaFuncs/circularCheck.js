@@ -1,5 +1,5 @@
-import { cursorDocEnd } from "@codemirror/commands";
-import { check } from "prettier";
+// import { cursorDocEnd } from "@codemirror/commands";
+// import { check } from "prettier";
 import { circularAttack } from "./generateCircularAttack";
 
 /*
@@ -10,10 +10,10 @@ import { circularAttack } from "./generateCircularAttack";
 */
 
 const testData = [
-  {name: 'NotConnected',   fields:[    {name: 'id', type: 'ID'},    {name: 'user', type:'User'}    ]  },
-  {name: 'User',   fields:[    {name: 'id', type: 'ID'},     {name: 'location', type:'Location'},    {name: 'cohort', type: 'String'}    ]  }, 
-  {name: 'Location',   fields:[    {name: 'id', type: 'ID'},    {name: 'gps', type: 'Number'},    {name: 'user', type:'Third'}    ]  },
-  {name: 'Third',   fields:[    {name: 'id', type: 'ID'},    {name: 'user', type:'User'}    ]  }  
+  { name: 'NotConnected', node: 0, fields: [{ name: 'id', type: 'ID' }, { name: 'user', type: 'User' }] },
+  { name: 'User', node: 1, fields: [{ name: 'id', type: 'ID' }, { name: 'location', type: 'Location' }, { name: 'cohort', type: 'String' }] },
+  { name: 'Location', node: 2, fields: [{ name: 'id', type: 'ID' }, { name: 'gps', type: 'Number' }, { name: 'user', type: 'Third' }] },
+  { name: 'Third', node: 3, fields: [{ name: 'id', type: 'ID' }, { name: 'user', type: 'User' }] }
 ]
 
 export const circularCheck = (parsedData) => {
@@ -29,8 +29,8 @@ export const circularCheck = (parsedData) => {
   parsedData.forEach((object) => {
     for (let [key,value] of Object.entries(object)){
       if (key === 'name'){
-      propName = value;
-      createGraph[value] = [];
+        propName = value;
+        createGraph[value] = [];
       }
       if (key === 'fields'){
         value.forEach(element => {
@@ -70,17 +70,15 @@ export const circularCheck = (parsedData) => {
   return false;
 }
 
-  function removeDuplicates (arrOfMaps) {
-    const used = new Set()
-    const noDuplicates = [];
-    const finalResult = arrOfMaps.forEach(circMap => {
-      const currentArr = Array.from(circMap).sort()
-      if (!used.has(`${currentArr}`)) {
-        used.add(`${currentArr}`)
-        noDuplicates.push(circMap)
-        }
-    })
-    return noDuplicates;
-  }
-
-// console.log('ignore me!', circularCheck(testData))
+function removeDuplicates (arrOfMaps) {
+  const used = new Set()
+  const noDuplicates = [];
+  const finalResult = arrOfMaps.forEach(circMap => {
+    const currentArr = Array.from(circMap).sort()
+    if (!used.has(`${currentArr}`)) {
+      used.add(`${currentArr}`)
+      noDuplicates.push(circMap)
+      }
+  })
+  return noDuplicates;
+}

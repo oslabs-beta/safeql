@@ -16,19 +16,18 @@ export const constructRFNodes = (parsedSchemas) => {
       }
       positionX += 275;
 
-    const obj = {
-      type: 'custom',
-      id: String(schema.node),
-      position: {x:positionX, y:positionY},
-      data: currentData
-        };
+      const obj = {
+        type: 'custom',
+        id: String(schema.node),
+        position: {x:positionX, y:positionY},
+        data: currentData
+      };
         
       const {name, fields} = schema;
       currentData.tableName = name;
       fields.forEach(subField => {
         currentData[subField.name] = subField.type
       })
-  
       
       nodes.push(obj)
   });

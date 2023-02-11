@@ -23,7 +23,7 @@ app
     server.get('/test2', (req, res) => {
       return res.send('test');
     });
-    //routes and middleware go here!
+    //routes and middleware
 
     server
       .listen(port, () => {

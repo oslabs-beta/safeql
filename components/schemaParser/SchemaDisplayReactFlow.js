@@ -3,7 +3,6 @@ import ReactFlow, {Background, Controls, applyEdgeChanges, applyNodeChanges} fro
 import 'reactflow/dist/style.css'
 import CustomNode from "./CustomNode";
 import { Context } from '../../src/context';
-// import {nodes as customNodes, edges as customEdges} from './ReformatSchemaJSON'
 
 const nodeTypes = {
   custom: CustomNode,
@@ -34,7 +33,6 @@ function SchemaDisplayReactFlow(props) {
   
   return (
     <div className="w-full">
-    {/* schemas */}
         <ReactFlow 
           nodes={nodes}
           onNodesChange={onNodesChange}

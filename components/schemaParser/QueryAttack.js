@@ -1,15 +1,12 @@
 import {  useState, useContext } from 'react'
 import { Context } from '../../src/context'
 
-
 function QueryAttack (props) {
   const [qInput, setQInput] = useState('')
-  // const [queryAttack] = useContext(Context)
   const { queryText } = props
 
   function handleClick () {
     setQInput(queryText)
-    // setInput(queryAttack)
   }
 
   return (
